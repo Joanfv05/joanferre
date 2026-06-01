@@ -1,70 +1,67 @@
 /* ══════════════════════════════════════════════════════════════
-   cursor.js — Cursor personalizado
-   Portfolio profesional de Joan Ferre Vañó
+   cursor.js — Cursor personalizado con glow y lerp suavizado
+   Portfolio de Joan Ferre Vañó
    ══════════════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* Solo activo en dispositivos con puntero preciso (ratón) */
+  /* Solo en dispositivos con ratón preciso */
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-  /* Crear elementos del cursor */
-  var dot  = document.createElement('div');
-  var ring = document.createElement('div');
-  dot.className  = 'cursor-dot';
-  ring.className = 'cursor-ring';
+  /* Crear elemento del cursor */
+  var dot = document.createElement('div');
+  dot.className = 'cursor-dot';
   document.body.appendChild(dot);
-  document.body.appendChild(ring);
 
   var mouseX = 0, mouseY = 0;
-  var ringX  = 0, ringY  = 0;
+  var posX   = 0, posY   = 0;
+  var visible = false;
 
-  /* Seguir el ratón con el punto de forma inmediata */
+  /* Seguir el ratón */
   document.addEventListener('mousemove', function (e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
+    if (!visible) {
+      /* Primer movimiento: teleportar sin lerp */
+      posX = mouseX; posY = mouseY;
+      visible = true;
+      dot.style.opacity = '1';
+    }
   });
 
-  /* El anillo sigue con suavidad mediante lerp */
+  /* Movimiento con lerp — suavidad elegante */
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   function tick() {
-    ringX = lerp(ringX, mouseX, 0.1);
-    ringY = lerp(ringY, mouseY, 0.1);
-    ring.style.left = ringX + 'px';
-    ring.style.top  = ringY + 'px';
+    posX = lerp(posX, mouseX, 0.13);
+    posY = lerp(posY, mouseY, 0.13);
+    dot.style.left = posX + 'px';
+    dot.style.top  = posY + 'px';
     requestAnimationFrame(tick);
   }
+  /* Iniciar oculto */
+  dot.style.opacity = '0';
   requestAnimationFrame(tick);
 
-  /* Efecto hover sobre elementos interactivos */
-  var hoverTargets = 'a, button, .card, .project-card, .social-card, .index-block, .video-card, .skill-chip';
+  /* Efecto hover — expansión y glow al pasar sobre elementos interactivos */
+  var hoverSel = 'a, button, .card, .project-card, .social-card, .index-block, .video-card, .skill-chip, .stat-item__num, .index-stat__num';
 
   function addHover()    { document.body.classList.add('cursor-hover'); }
   function removeHover() { document.body.classList.remove('cursor-hover'); }
 
-  function bindHoverTargets() {
-    document.querySelectorAll(hoverTargets).forEach(function (el) {
+  function bind() {
+    document.querySelectorAll(hoverSel).forEach(function (el) {
       el.addEventListener('mouseenter', addHover);
       el.addEventListener('mouseleave', removeHover);
     });
   }
-  bindHoverTargets();
+  bind();
 
-  /* Ocultar cursor al salir del viewport */
-  document.addEventListener('mouseleave', function () {
-    dot.style.opacity  = '0';
-    ring.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', function () {
-    dot.style.opacity  = '1';
-    ring.style.opacity = '1';
-  });
+  /* Ocultar al salir del viewport */
+  document.addEventListener('mouseleave', function () { dot.style.opacity = '0'; });
+  document.addEventListener('mouseenter', function () { dot.style.opacity = '1'; });
 
-  /* Re-bind si el DOM cambia (por si acaso) */
-  window.rebindCursor = bindHoverTargets;
-
+  /* API pública para rebindear si el DOM cambia */
+  window.rebindCursor = bind;
 })();

@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Desarrollo de software — Joan Ferre Vañó</title>
-  <meta name="description" content="Proyectos de desarrollo de software. DAM · Python · Flutter · C# · Unity VR · Odoo."/>
+  <meta name="description" content="10 proyectos en GitHub. Python, Flutter, C#, Unity VR, Java. DAM."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -15,7 +15,6 @@
 </head>
 <body class="page-enter">
 
-  <!-- ── NAVBAR ─────────────────────────────────────────────── -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo">Joan Ferre</a>
@@ -40,17 +39,17 @@
   </div>
 
   <main>
-    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <!-- ── HERO con estética terminal ────────────────────── -->
     <section class="hero hero--left">
       <div class="container">
         <div class="hero__inner">
           <span class="hero__eyebrow hero-reveal">DAM · Desarrollo de Aplicaciones Multiplataforma</span>
-          <h1 class="hero__title hero-reveal">
+          <!-- Título con glow verde-blanco suave referencia a terminal -->
+          <h1 class="hero__title hero-reveal" style="text-shadow:0 0 10px rgba(200,255,200,0.3),0 0 30px rgba(255,255,255,0.15)">
             También<br/><em>programo.</em>
           </h1>
           <p class="hero__sub hero-reveal">
-            Construyo herramientas que uso a diario — scripts de edición,
-            apps móviles, organizadores. Código que resuelve problemas reales.
+            Construyo herramientas que uso a diario. Código que resuelve problemas reales.
           </p>
           <div class="hero__ctas hero-reveal">
             <a href="https://github.com/joanferrevano" class="btn btn--white btn--lg" target="_blank" rel="noopener">
@@ -64,12 +63,13 @@
       <span class="hero__bg-text" aria-hidden="true">02</span>
     </section>
 
-    <!-- ── SKILLS ────────────────────────────────────────────── -->
+    <!-- ── CONTADOR y SKILLS ──────────────────────────────── -->
     <section class="section">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="label">Tecnologías</span>
-          <h2>Con qué trabajo</h2>
+        <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:var(--sp-lg)" class="reveal">
+          <!-- Número con glow intenso pulsante -->
+          <span class="projects-count">15</span>
+          <span style="font-size:var(--s-lg);color:var(--text-2)">proyectos en GitHub</span>
         </div>
         <div class="skills-row stagger">
           <span class="skill-chip">Python</span>
@@ -81,87 +81,131 @@
           <span class="skill-chip">Odoo</span>
           <span class="skill-chip">Git / GitHub</span>
           <span class="skill-chip">SQL</span>
+          <span class="skill-chip">Pygame</span>
         </div>
       </div>
     </section>
 
-    <!-- ── PROYECTOS ─────────────────────────────────────────── -->
+    <!-- ── CATEGORÍA: HERRAMIENTAS ────────────────────────── -->
     <section class="section">
       <div class="container">
         <div class="section__head reveal">
           <span class="label">Proyectos</span>
           <h2>Lo que he construido</h2>
-          <p>Herramientas reales que resuelven problemas reales. La mayoría nacieron de una necesidad mía.</p>
+          <p>Herramientas reales que resuelven problemas reales. La mayoría nacieron de una necesidad propia.</p>
         </div>
 
-        <div class="projects-grid stagger">
+        <!-- Título de categoría con línea brillante -->
+        <div class="cat-title reveal">Herramientas</div>
+        <div class="projects-grid stagger" style="margin-bottom:var(--sp-2xl)">
 
-          <!-- Proyecto 1 -->
-          <a href="https://github.com/joanferrevano/Cortador-de-Silencios" class="project-card card-3d" target="_blank" rel="noopener">
+          <a href="https://github.com/joanferrevano/Cortador-de-Silencios" class="project-card" target="_blank" rel="noopener">
             <div class="project-card__top">
               <span class="project-card__name">Cortador de Silencios</span>
-              <span class="badge badge--white">Uso diario</span>
+              <!-- Badge verde: uso diario -->
+              <span class="badge badge--green">Uso diario</span>
             </div>
             <span class="project-card__tech">Python</span>
-            <p class="project-card__desc">
-              Herramienta que elimina automáticamente los silencios de cualquier vídeo.
-              La uso a diario en mi proceso de edición — me ahorra horas cada semana.
-            </p>
-            <span class="project-card__link">
-              Ver en GitHub
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
+            <p class="project-card__desc">Elimina automáticamente los silencios de cualquier vídeo. La uso a diario en mi proceso de edición — me ahorra horas cada semana.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
           </a>
 
-          <!-- Proyecto 2 -->
-          <a href="https://github.com/joanferrevano/Macro-Tracker" class="project-card card-3d" target="_blank" rel="noopener">
+          <a href="https://github.com/joanferrevano/Macro-Tracker" class="project-card" target="_blank" rel="noopener">
             <div class="project-card__top">
               <span class="project-card__name">Macro Tracker</span>
-              <span class="badge badge--active">En desarrollo</span>
+              <!-- Badge ámbar pulsante: en desarrollo -->
+              <span class="badge badge--amber">En desarrollo</span>
             </div>
             <span class="project-card__tech">Flutter / Dart</span>
-            <p class="project-card__desc">
-              App móvil para seguimiento de macronutrientes. Desarrollo activo —
-              nació de querer controlar mi alimentación sin depender de apps de terceros.
-            </p>
-            <span class="project-card__link">
-              Ver en GitHub
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
+            <p class="project-card__desc">App móvil para seguimiento de macronutrientes. Desarrollo activo — nació de querer controlar mi alimentación sin depender de terceros.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
           </a>
 
-          <!-- Proyecto 3 -->
-          <a href="https://github.com/joanferrevano/Organizador-de-Fotos" class="project-card card-3d" target="_blank" rel="noopener">
+          <a href="https://github.com/joanferrevano/Organizador-de-Fotos" class="project-card" target="_blank" rel="noopener">
             <div class="project-card__top">
               <span class="project-card__name">Organizador de Fotos</span>
-              <span class="badge badge--dim">Python</span>
+              <span class="badge badge--dim">Script</span>
             </div>
-            <span class="project-card__tech">Python · Script</span>
-            <p class="project-card__desc">
-              Script que organiza automáticamente fotos del PC por fecha o tipo de archivo.
-              Solución práctica a tener miles de fotos sin estructura.
-            </p>
-            <span class="project-card__link">
-              Ver en GitHub
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
+            <span class="project-card__tech">Python</span>
+            <p class="project-card__desc">Organiza automáticamente fotos del PC por fecha o tipo de archivo. Solución práctica a miles de fotos sin estructura.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
           </a>
 
-          <!-- Proyecto 4 -->
-          <a href="https://github.com/joanferrevano/Organizador_Fotos_PC" class="project-card card-3d" target="_blank" rel="noopener">
+          <a href="https://github.com/joanferrevano/Organizador_Fotos_PC" class="project-card" target="_blank" rel="noopener">
             <div class="project-card__top">
               <span class="project-card__name">Organizador de Fotos (App)</span>
-              <span class="badge badge--dim">Flutter</span>
+              <span class="badge badge--dim">App</span>
             </div>
-            <span class="project-card__tech">Flutter / Dart · App de escritorio</span>
-            <p class="project-card__desc">
-              Versión en app de escritorio del organizador de fotos.
-              Misma utilidad, mejor experiencia. La misma lógica, en tu bolsillo.
-            </p>
-            <span class="project-card__link">
-              Ver en GitHub
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </span>
+            <span class="project-card__tech">Flutter / Dart</span>
+            <p class="project-card__desc">Versión app de escritorio del organizador de fotos. La misma utilidad, mejor experiencia visual y de uso.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://github.com/joanferrevano/Descargar-musica-de-YT" class="project-card" target="_blank" rel="noopener">
+            <div class="project-card__top">
+              <span class="project-card__name">Descargar Música de YouTube</span>
+              <span class="badge badge--dim">Script</span>
+            </div>
+            <span class="project-card__tech">Python</span>
+            <p class="project-card__desc">Script para descargar música de YouTube de forma rápida y sencilla. Para uso personal y tener tu biblioteca local.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://github.com/joanferrevano/Chat-PSP" class="project-card" target="_blank" rel="noopener">
+            <div class="project-card__top">
+              <span class="project-card__name">Chat PSP</span>
+              <span class="badge badge--dim">App</span>
+            </div>
+            <span class="project-card__tech">C#</span>
+            <p class="project-card__desc">Aplicación de chat en tiempo real. Proyecto académico con arquitectura cliente-servidor y comunicación bidireccional.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+        </div>
+
+        <!-- Título de categoría con línea brillante -->
+        <div class="cat-title reveal">Videojuegos y VR</div>
+        <div class="projects-grid stagger">
+
+          <!-- Tarjeta VR con glow azul-blanco espacial -->
+          <a href="https://github.com/joanferrevano/Planetas-en-VR" class="project-card project-card--vr" target="_blank" rel="noopener">
+            <div class="project-card__top">
+              <span class="project-card__name">Planetas en VR</span>
+              <span class="badge badge--dim">VR</span>
+            </div>
+            <span class="project-card__tech">C# / Unity VR</span>
+            <p class="project-card__desc">Experiencia de realidad virtual con el sistema solar navegable. Explora planetas en escala real desde dentro de un visor VR.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://github.com/ProyectoJuegoGranja/CluckRun" class="project-card" target="_blank" rel="noopener">
+            <div class="project-card__top">
+              <span class="project-card__name">CluckRun</span>
+              <span class="badge badge--dim">Juego</span>
+            </div>
+            <span class="project-card__tech">C# / Unity</span>
+            <p class="project-card__desc">Videojuego con dos niveles e interfaz trabajada. Proyecto en equipo — diseño, programación y audio coordinados.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://github.com/joanferrevano/Indiana-Jones-Juego" class="project-card" target="_blank" rel="noopener">
+            <div class="project-card__top">
+              <span class="project-card__name">Indiana Jones Juego</span>
+              <span class="badge badge--dim">Juego</span>
+            </div>
+            <span class="project-card__tech">Java</span>
+            <p class="project-card__desc">Juego de aventuras inspirado en Indiana Jones. Plataformas, obstáculos y escenas de acción construidas desde cero en Java.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://github.com/joanferrevano/Hollow-Knight---Python" class="project-card" target="_blank" rel="noopener">
+            <div class="project-card__top">
+              <span class="project-card__name">Hollow Knight en Python</span>
+              <span class="badge badge--dim">Juego</span>
+            </div>
+            <span class="project-card__tech">Python / Pygame</span>
+            <p class="project-card__desc">Recreación del videojuego Hollow Knight desde cero. El proyecto más ambicioso en Python — física, colisiones y sprites.</p>
+            <span class="project-card__link">Ver en GitHub <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
           </a>
 
         </div>

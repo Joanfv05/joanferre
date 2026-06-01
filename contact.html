@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contacto — Joan Ferre Vañó</title>
-  <meta name="description" content="Escríbeme para colaboraciones, proyectos o simplemente para hablar."/>
+  <meta name="description" content="Escríbeme para colaboraciones, proyectos o simplemente hablar."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -15,7 +15,6 @@
 </head>
 <body class="page-enter">
 
-  <!-- ── NAVBAR ─────────────────────────────────────────────── -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo">Joan Ferre</a>
@@ -48,9 +47,9 @@
           <h1 class="hero__title hero-reveal">
             ¿Tienes algo<br/><em>en mente?</em>
           </h1>
-          <p class="hero__sub hero-reveal">
-            ¿Tienes un proyecto, una colaboración o simplemente quieres hablar?
-            Escríbeme. Respondo a todos los mensajes.
+          <!-- Frase con shimmer plateado igual que about.html -->
+          <p class="hero-reveal" style="font-family:var(--font-display);font-size:clamp(1rem,2.5vw,1.4rem);max-width:52ch;margin:0 auto var(--sp-xl)">
+            <span class="shimmer-text">¿Tienes un proyecto, una colaboración o simplemente quieres hablar? Escríbeme.</span>
           </p>
         </div>
       </div>
@@ -61,15 +60,17 @@
       <div class="container">
         <div class="contact-grid">
 
-          <!-- Columna izquierda: info -->
+          <!-- Columna izquierda: email + redes -->
           <div class="reveal">
             <span class="label">Email directo</span>
+            <!-- Email con glow suave estático -->
             <a href="mailto:joanferrecontact@gmail.com" class="contact-email-link">
               joanferrecontact<br/>@gmail.com
             </a>
 
             <div style="margin-top:var(--sp-xl)">
               <span class="label">También aquí</span>
+              <!-- Iconos con glow blanco al hover -->
               <div class="social-grid stagger" style="grid-template-columns:repeat(2,1fr)">
 
                 <a href="https://www.youtube.com/@joanferreyt" class="social-card" target="_blank" rel="noopener">
@@ -124,7 +125,7 @@
             </div>
           </div>
 
-          <!-- Columna derecha: formulario -->
+          <!-- Columna derecha: formulario con focus neon -->
           <div class="reveal reveal--delay">
             <span class="label">Formulario</span>
             <form class="form" id="contact-form" novalidate>
@@ -146,6 +147,7 @@
                 <label for="mensaje" class="form__label">Mensaje</label>
                 <textarea id="mensaje" name="mensaje" class="form__input form__textarea" placeholder="Cuéntame..." rows="6" required></textarea>
               </div>
+              <!-- Botón con efecto neon de encendido al hover -->
               <button type="submit" class="btn btn--white btn--lg">Enviar mensaje</button>
               <p class="form__aviso" id="form-aviso" aria-live="polite"></p>
             </form>
@@ -154,7 +156,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <footer class="footer">

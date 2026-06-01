@@ -1,49 +1,133 @@
 /* ══════════════════════════════════════════════════════════════
-   animations.css — Keyframes y clases de animación
-   Portfolio profesional de Joan Ferre Vañó
+   animations.css — Keyframes, glow, shimmer, neon, ripple
+   Portfolio de Joan Ferre Vañó
    ══════════════════════════════════════════════════════════════ */
 
-/* ── Keyframes ──────────────────────────────────────────────── */
+/* ── @property para ángulo neon rotativo ────────────────────── */
+@property --neon-angle {
+  syntax: '<angle>'; initial-value: 0deg; inherits: false;
+}
 
+/* ── Keyframes ──────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0);    }
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes lineGrow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-@keyframes cursorPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50%       { transform: translate(-50%, -50%) scale(1.4); }
-}
-
-@keyframes timelineDot {
-  from { transform: scale(0); opacity: 0; }
-  to   { transform: scale(1); opacity: 1;  }
-}
-
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* ── Entrada de página ──────────────────────────────────────── */
-.page-enter {
-  animation: pageIn 0.55s var(--ease) both;
+/* Glow pulsante — nombre hero */
+@keyframes glow-pulse {
+  0%,100% {
+    text-shadow: 0 0 10px #fff, 0 0 20px rgba(255,255,255,0.6),
+                 0 0 40px rgba(255,255,255,0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px #fff, 0 0 40px rgba(255,255,255,0.8),
+                 0 0 80px rgba(255,255,255,0.5), 0 0 120px rgba(255,255,255,0.2);
+  }
 }
 
-/* ── Hero: texto con reveal progresivo ──────────────────────── */
+/* Shimmer plateado/dorado en taglines */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Trazo neon rotativo (showreel, foto placeholder) */
+@keyframes neon-rotate {
+  to { --neon-angle: 360deg; }
+}
+
+/* Ripple expansivo en nodos del timeline */
+@keyframes ripple-wave {
+  0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
+  100% { transform: translate(-50%,-50%) scale(3.5); opacity: 0; }
+}
+
+/* Glow pulsante — badge "En desarrollo" (ámbar) */
+@keyframes pulse-amber {
+  0%,100% { box-shadow: 0 0 4px #ffbf40, 0 0 8px rgba(255,180,50,0.3); }
+  50%     { box-shadow: 0 0 8px #ffbf40, 0 0 18px rgba(255,180,50,0.5); }
+}
+
+/* Glow pulsante — contador de proyectos */
+@keyframes pulse-num {
+  0%,100% { text-shadow: 0 0 12px #fff, 0 0 24px rgba(255,255,255,0.4); }
+  50%     { text-shadow: 0 0 20px #fff, 0 0 40px rgba(255,255,255,0.7); }
+}
+
+/* Destello diagonal en tarjetas al entrar en viewport */
+@keyframes card-sweep {
+  0%   { left: -80%; opacity: 0; }
+  30%  { opacity: 0.18; }
+  100% { left: 130%; opacity: 0; }
+}
+
+/* Crecimiento de la línea del timeline */
+@keyframes line-grow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+/* Activación del nodo del timeline */
+@keyframes dot-activate {
+  0%   { transform: scale(0.5); box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+  50%  { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+  100% { transform: scale(1);   box-shadow: 0 0 6px #fff, 0 0 14px rgba(255,255,255,0.4); }
+}
+
+/* ── Clases de animación ────────────────────────────────────── */
+
+/* Entrada de página */
+.page-enter { animation: pageIn 0.55s var(--ease) both; }
+
+/* Glow pulsante para el nombre del hero */
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Shimmer texto */
+.shimmer-text {
+  background: var(--shimmer);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* Trazo neon rotativo — borde animado que "da vueltas" */
+.neon-trace {
+  position: relative;
+}
+.neon-trace::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--neon-angle),
+    transparent 0deg 320deg,
+    rgba(255,255,255,0.9) 320deg 340deg,
+    rgba(255,255,255,0.3) 340deg 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: neon-rotate 3s linear infinite;
+  pointer-events: none;
+}
+
+/* Hero: reveal progresivo con fade+up */
 .hero-reveal {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 0; transform: translateY(20px);
   animation: fadeUp var(--dur) var(--ease) forwards;
 }
 .hero-reveal:nth-child(1) { animation-delay: 0.1s; }
@@ -52,108 +136,63 @@
 .hero-reveal:nth-child(4) { animation-delay: 0.46s; }
 .hero-reveal:nth-child(5) { animation-delay: 0.58s; }
 
-/* ── Scroll reveal ──────────────────────────────────────────── */
+/* Scroll reveal */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 0; transform: translateY(24px);
   transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
 }
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal--delay { transition-delay: 0.15s; }
 
-/* Stagger escalonado para grupos de elementos */
+/* Stagger escalonado */
 .stagger > * {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 0; transform: translateY(20px);
   transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
 }
-.stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s;    }
-.stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s;  }
-.stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s;  }
-.stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s;  }
-.stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s;  }
-.stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s;  }
-.stagger.is-visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.6s;  }
-.stagger.is-visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 0.7s;  }
+.stagger.is-visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s;    }
+.stagger.is-visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s;  }
+.stagger.is-visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s;  }
+.stagger.is-visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s;  }
+.stagger.is-visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.4s;  }
+.stagger.is-visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.5s;  }
+.stagger.is-visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.6s;  }
+.stagger.is-visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:0.7s;  }
+.stagger.is-visible > *:nth-child(9) { opacity:1; transform:none; transition-delay:0.8s;  }
+.stagger.is-visible > *:nth-child(10){ opacity:1; transform:none; transition-delay:0.9s;  }
 
-/* ── Cursor personalizado ───────────────────────────────────── */
-.cursor-dot {
-  position: fixed;
-  width: 7px;
-  height: 7px;
-  background: var(--white);
-  border-radius: 50%;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-}
-.cursor-ring {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 50%;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--ease), height 0.3s var(--ease),
-              border-color 0.3s, transform 0.08s linear;
-}
-body.cursor-hover .cursor-dot  { width: 10px; height: 10px; background: var(--white); }
-body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(255,255,255,0.6); }
-
-/* ── Timeline ───────────────────────────────────────────────── */
-.timeline-item .tl-dot {
-  transition: transform 0.4s var(--ease), background 0.4s;
-}
-.timeline-item.is-visible .tl-dot {
-  animation: timelineDot 0.45s var(--ease) forwards;
-}
-.timeline-item {
-  opacity: 0;
-  transform: translateX(-16px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-}
-.timeline-item.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ── Hover 3D en tarjetas ───────────────────────────────────── */
-.card-3d {
-  transition: transform 0.35s var(--ease), box-shadow 0.35s;
-  transform-style: preserve-3d;
-  perspective: 800px;
-}
-.card-3d:hover {
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-/* ── Transición de página ───────────────────────────────────── */
-.page-transition-overlay {
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  z-index: 9000;
+/* Destello diagonal en tarjeta al entrar en viewport */
+.card-has-sweep { position: relative; overflow: hidden; }
+.card-has-sweep::after {
+  content: '';
+  position: absolute; top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.15) 50%, transparent 80%);
+  transform: skewX(-15deg);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s var(--ease);
 }
-.page-transition-overlay.active { opacity: 1; }
+.card-has-sweep.sweep-once::after {
+  animation: card-sweep 0.7s ease forwards;
+}
 
-/* ── Accesibilidad: reducir movimiento ──────────────────────── */
+/* Badge glow verde — "Uso diario" */
+.badge--green {
+  background: rgba(100,255,100,0.08);
+  color: #9fff9f;
+  border: 1px solid rgba(100,255,100,0.35);
+  box-shadow: var(--glow-green);
+}
+
+/* Badge glow ámbar pulsante — "En desarrollo" */
+.badge--amber {
+  background: rgba(255,180,50,0.08);
+  color: #ffd080;
+  border: 1px solid rgba(255,180,50,0.35);
+  animation: pulse-amber 2.5s ease-in-out infinite;
+}
+
+/* Accesibilidad: reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-  .reveal, .stagger > *, .hero-reveal, .timeline-item {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal, .stagger > *, .hero-reveal { opacity: 1 !important; transform: none !important; }
 }

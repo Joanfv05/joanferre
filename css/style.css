@@ -1,38 +1,50 @@
 /* ══════════════════════════════════════════════════════════════
    style.css — Variables, reset, tipografía, layout base
-   Portfolio profesional de Joan Ferre Vañó
+   Portfolio de Joan Ferre Vañó
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Variables globales ─────────────────────────────────────── */
 :root {
-  /* Colores */
-  --bg:           #0a0a0a;
-  --bg-2:         #111111;
-  --bg-3:         #1a1a1a;
-  --bg-4:         #242424;
-  --border:       rgba(255,255,255,0.07);
-  --border-h:     rgba(255,255,255,0.15);
-  --text:         #f0f0f0;
-  --text-2:       #aaaaaa;
-  --text-3:       #555555;
-  --white:        #ffffff;
+  /* Colores base */
+  --bg:      #0a0a0a;
+  --bg-2:    #111111;
+  --bg-3:    #1a1a1a;
+  --bg-4:    #222222;
+  --border:  rgba(255,255,255,0.07);
+  --border-h:rgba(255,255,255,0.18);
+  --white:   #ffffff;
+  --text:    #f0f0f0;
+  --text-2:  #999999;
+  --text-3:  #484848;
+
+  /* Glow / neon */
+  --glow-sm:  0 0 8px rgba(255,255,255,0.5);
+  --glow-md:  0 0 6px #fff, 0 0 14px rgba(255,255,255,0.4);
+  --glow-lg:  0 0 8px #fff, 0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,255,255,0.2);
+  --glow-xl:  0 0 12px #fff, 0 0 30px rgba(255,255,255,0.6), 0 0 60px rgba(255,255,255,0.25);
+  --glow-vr:  0 0 8px #9cf, 0 0 20px rgba(100,200,255,0.5), 0 0 40px rgba(100,200,255,0.25);
+  --glow-green: 0 0 6px #7fff7f, 0 0 14px rgba(100,255,100,0.4);
+  --glow-amber: 0 0 6px #ffbf40, 0 0 14px rgba(255,180,50,0.4);
+  --glow-gold:  0 0 8px #d4af37, 0 0 20px rgba(212,175,55,0.5);
+
+  /* Shimmer gradient */
+  --shimmer: linear-gradient(90deg, #888 0%, #fff 25%, #d4af37 50%, #fff 75%, #888 100%);
 
   /* Tipografía */
   --font-display: 'Playfair Display', serif;
   --font-body:    'DM Sans', sans-serif;
 
   /* Tamaños */
-  --s-xs:   0.68rem;
-  --s-sm:   0.85rem;
-  --s-base: 1rem;
-  --s-md:   1.1rem;
-  --s-lg:   1.25rem;
-  --s-xl:   1.5rem;
-  --s-2xl:  2rem;
-  --s-3xl:  2.75rem;
-  --s-4xl:  3.75rem;
-  --s-5xl:  5rem;
-  --s-6xl:  7rem;
+  --s-xs:  0.68rem;
+  --s-sm:  0.85rem;
+  --s-md:  1.1rem;
+  --s-lg:  1.25rem;
+  --s-xl:  1.5rem;
+  --s-2xl: 2rem;
+  --s-3xl: 2.75rem;
+  --s-4xl: 3.75rem;
+  --s-5xl: 5rem;
+  --s-6xl: 7rem;
 
   /* Espaciado */
   --sp-xs:  0.4rem;
@@ -43,12 +55,12 @@
   --sp-2xl: 7rem;
 
   /* Misc */
-  --radius:   8px;
+  --radius:    8px;
   --radius-lg: 16px;
-  --ease:     cubic-bezier(0.16, 1, 0.3, 1);
-  --dur:      0.6s;
-  --dur-fast: 0.2s;
-  --navbar-h: 68px;
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+  --dur:       0.6s;
+  --dur-fast:  0.2s;
+  --navbar-h:  68px;
 }
 
 /* ── Reset ──────────────────────────────────────────────────── */
@@ -58,7 +70,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: var(--s-base);
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -85,36 +97,17 @@ h3 { font-size: clamp(var(--s-xl), 3vw, var(--s-2xl)); }
 p  { color: var(--text-2); line-height: 1.7; }
 
 /* ── Layout ─────────────────────────────────────────────────── */
-.container {
-  width: 100%;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 var(--sp-lg);
-}
+.container    { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 var(--sp-lg); }
 .container--sm { max-width: 760px; }
 .container--xs { max-width: 600px; }
 
-/* ── Utilidades de texto ────────────────────────────────────── */
+/* ── Utilidades ─────────────────────────────────────────────── */
 .label {
   display: inline-block;
-  font-size: var(--s-xs);
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin-bottom: var(--sp-md);
+  font-size: var(--s-xs); font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-3); margin-bottom: var(--sp-md);
 }
-.label--light { color: var(--text-2); }
-
-.eyebrow {
-  font-size: var(--s-sm);
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}
-
-/* ── Secciones ──────────────────────────────────────────────── */
 .section { padding: var(--sp-2xl) 0; }
 .section + .section { border-top: 1px solid var(--border); }
 .section__head { margin-bottom: var(--sp-xl); }
@@ -123,39 +116,24 @@ p  { color: var(--text-2); line-height: 1.7; }
 
 /* Línea decorativa bajo título de sección */
 .section__head h2::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 1px;
-  background: var(--text-3);
+  content: ''; display: block; width: 0; height: 1px;
+  background: linear-gradient(90deg, var(--white), transparent);
+  box-shadow: var(--glow-sm);
   margin-top: var(--sp-md);
   transition: width 1.2s var(--ease);
 }
 .section__head.is-visible h2::after { width: 60px; }
 
-/* ── Divisor ────────────────────────────────────────────────── */
-.divider {
-  height: 1px;
-  background: var(--border);
-  width: 100%;
-}
-
 /* ── Footer ─────────────────────────────────────────────────── */
-.footer {
-  padding: var(--sp-lg) 0;
-  border-top: 1px solid var(--border);
-}
+.footer { padding: var(--sp-lg) 0; border-top: 1px solid var(--border); }
 .footer__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--sp-md);
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: var(--sp-md);
 }
 .footer__copy { font-size: var(--s-xs); color: var(--text-3); }
 .footer__links { display: flex; gap: var(--sp-md); }
-.footer__links a { font-size: var(--s-xs); color: var(--text-3); transition: color var(--dur-fast); }
-.footer__links a:hover { color: var(--text); }
+.footer__links a { font-size: var(--s-xs); color: var(--text-3); transition: color var(--dur-fast), text-shadow var(--dur-fast); }
+.footer__links a:hover { color: var(--white); text-shadow: var(--glow-sm); }
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 900px) {

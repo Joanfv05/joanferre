@@ -202,3 +202,11 @@
   .hero.hero--center .hero__ctas { align-items: center; }
   .stats-row { gap: var(--sp-md); }
 }
+
+/* ── Descripcion de videos ─────────────────────────────────────────────── */
+.video-card__desc {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}

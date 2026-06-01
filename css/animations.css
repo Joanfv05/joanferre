@@ -154,16 +154,16 @@
   opacity: 0; transform: translateY(22px);
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
-.stagger.is-visible > *:nth-child(1)  { opacity:1; transform:none; transition-delay:0s;    }
-.stagger.is-visible > *:nth-child(2)  { opacity:1; transform:none; transition-delay:0.1s;  }
-.stagger.is-visible > *:nth-child(3)  { opacity:1; transform:none; transition-delay:0.2s;  }
-.stagger.is-visible > *:nth-child(4)  { opacity:1; transform:none; transition-delay:0.3s;  }
-.stagger.is-visible > *:nth-child(5)  { opacity:1; transform:none; transition-delay:0.4s;  }
-.stagger.is-visible > *:nth-child(6)  { opacity:1; transform:none; transition-delay:0.5s;  }
-.stagger.is-visible > *:nth-child(7)  { opacity:1; transform:none; transition-delay:0.6s;  }
-.stagger.is-visible > *:nth-child(8)  { opacity:1; transform:none; transition-delay:0.7s;  }
-.stagger.is-visible > *:nth-child(9)  { opacity:1; transform:none; transition-delay:0.8s;  }
-.stagger.is-visible > *:nth-child(10) { opacity:1; transform:none; transition-delay:0.9s;  }
+.stagger.is-visible > *:nth-child(1)  { opacity:1; transform:translateY(0); transition-delay:0s;    }
+.stagger.is-visible > *:nth-child(2)  { opacity:1; transform:translateY(0); transition-delay:0.1s;  }
+.stagger.is-visible > *:nth-child(3)  { opacity:1; transform:translateY(0); transition-delay:0.2s;  }
+.stagger.is-visible > *:nth-child(4)  { opacity:1; transform:translateY(0); transition-delay:0.3s;  }
+.stagger.is-visible > *:nth-child(5)  { opacity:1; transform:translateY(0); transition-delay:0.4s;  }
+.stagger.is-visible > *:nth-child(6)  { opacity:1; transform:translateY(0); transition-delay:0.5s;  }
+.stagger.is-visible > *:nth-child(7)  { opacity:1; transform:translateY(0); transition-delay:0.6s;  }
+.stagger.is-visible > *:nth-child(8)  { opacity:1; transform:translateY(0); transition-delay:0.7s;  }
+.stagger.is-visible > *:nth-child(9)  { opacity:1; transform:translateY(0); transition-delay:0.8s;  }
+.stagger.is-visible > *:nth-child(10) { opacity:1; transform:translateY(0); transition-delay:0.9s;  }
 
 /* Destello diagonal en tarjeta al entrar en viewport */
 .card-has-sweep { position: relative; overflow: hidden; }

@@ -71,18 +71,18 @@
     tlItems.forEach(function (item) { tlIO.observe(item); });
   }
 
-  /* ── 4. Hover 3D en tarjetas de proyectos ───────────────── */
-  document.querySelectorAll('.project-card').forEach(function (card) {
+  /* ── 4. Hover 3D en tarjetas ────────────────────────────── */
+  document.querySelectorAll('.project-card, .video-card, .social-card').forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
       var rect = card.getBoundingClientRect();
       var cx = rect.left + rect.width / 2;
       var cy = rect.top + rect.height / 2;
       var rx = ((e.clientY - cy) / rect.height) * -8;
       var ry = ((e.clientX - cx) / rect.width) * 8;
-      card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-5px)';
+      card.style.cssText += ';transform:perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-5px)!important';
     });
     card.addEventListener('mouseleave', function () {
-      card.style.transform = '';
+      card.style.removeProperty('transform');
     });
   });
 

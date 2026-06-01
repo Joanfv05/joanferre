@@ -75,13 +75,11 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  cursor: none;
 }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: none; border: none; background: none; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
 ul { list-style: none; }
-@media (hover: none) { body { cursor: auto; } button { cursor: pointer; } }
 
 /* ── Tipografía ─────────────────────────────────────────────── */
 h1, h2, h3 {

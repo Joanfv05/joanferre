@@ -48,7 +48,7 @@
 .navbar__link.is-active::after { width: 100%; }
 
 /* Hamburguesa */
-.navbar__burger { display: none; flex-direction: column; gap: 5px; padding: 4px; cursor: none; }
+.navbar__burger { display: none; flex-direction: column; gap: 5px; padding: 4px; cursor: pointer; }
 .navbar__burger span {
   display: block; width: 20px; height: 1.5px;
   background: var(--text); border-radius: 2px;
@@ -78,7 +78,7 @@
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.7rem 1.5rem; font-size: var(--s-sm); font-weight: 500;
   border-radius: var(--radius); border: 1px solid transparent;
-  transition: all 0.3s var(--ease); cursor: none; white-space: nowrap;
+  transition: all 0.3s var(--ease); cursor: pointer; white-space: nowrap;
 }
 .btn:hover { transform: translateY(-2px); }
 
@@ -104,7 +104,8 @@
 /* ── HERO genérico ───────────────────────────────────────────── */
 .hero {
   min-height: 100svh;
-  padding: calc(var(--navbar-h) + var(--sp-2xl)) var(--sp-lg) var(--sp-2xl);
+  /* Padding generoso arriba para que el glow del nombre no quede cortado */
+  padding: calc(var(--navbar-h) + var(--sp-xl) + 2rem) var(--sp-lg) var(--sp-2xl);
   display: flex; align-items: center; justify-content: center;
   text-align: center; position: relative; overflow: hidden;
 }
@@ -125,12 +126,16 @@
 .hero__ctas { display: flex; gap: var(--sp-sm); flex-wrap: wrap; justify-content: center; }
 .hero--left .hero__ctas { justify-content: flex-start; }
 
-/* Texto decorativo de fondo */
+/* Texto decorativo de fondo — esquina inferior derecha
+   Tamaño calculado para que las 3 letras JFV quepan sin cortarse:
+   a ~18vw cada letra ocupa ~12vw → 3 letras = ~36vw, caben en pantalla */
 .hero__bg-text {
   position: absolute; font-family: var(--font-display);
-  font-size: clamp(10rem, 30vw, 28rem);
-  color: var(--white); opacity: 0.02; pointer-events: none;
-  user-select: none; line-height: 1; bottom: -0.1em; right: -0.05em;
+  font-size: clamp(7rem, 18vw, 17rem);
+  color: var(--white); opacity: 0.05; pointer-events: none;
+  user-select: none; line-height: 1;
+  bottom: var(--sp-md); right: var(--sp-lg);
+  letter-spacing: -0.04em;
 }
 
 /* ── STAT ITEMS ──────────────────────────────────────────────── */
@@ -184,23 +189,7 @@
 .social-card__name { font-size: var(--s-sm); font-weight: 500; color: var(--white); }
 .social-card__sub  { font-size: var(--s-xs); color: var(--text-3); }
 
-/* ── Cursor personalizado ────────────────────────────────────── */
-.cursor-dot {
-  position: fixed; border-radius: 50%;
-  width: 8px; height: 8px;
-  border: 1px solid rgba(255,255,255,0.8);
-  background: transparent;
-  top: 0; left: 0; pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  box-shadow: 0 0 6px rgba(255,255,255,0.4);
-  transition: width 0.2s, height 0.2s, background 0.2s, box-shadow 0.2s;
-}
-body.cursor-hover .cursor-dot {
-  width: 24px; height: 24px;
-  background: rgba(255,255,255,0.12);
-  box-shadow: 0 0 12px rgba(255,255,255,0.5), 0 0 24px rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.9);
-}
+/* Cursor: se usa el del sistema (normal) */
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 900px) {

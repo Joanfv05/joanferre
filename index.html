@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joan Ferrer — Editor de Vídeo & Dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-logo">JF</div>
+    <ul class="nav-links">
+      <li><a href="#reel">Reel</a></li>
+      <li><a href="#video-work">Trabajos</a></li>
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#dev-work">Dev</a></li>
+      <li><a href="#contact" class="nav-cta">Contacto</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Menú">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-grain"></div>
+      <div class="hero-lines"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="hero-label-line"></span>
+        <span>Editor de vídeo & Desarrollador</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-line" data-text="Joan">Joan</span>
+        <span class="hero-title-line hero-title-italic" data-text="Ferrer">Ferrer</span>
+      </h1>
+      <p class="hero-sub">Cuento historias a través del ritmo, la imagen y el movimiento.<br>También escribo código cuando es necesario.</p>
+      <div class="hero-cta-group">
+        <button class="btn-reel" id="playReelBtn">
+          <span class="btn-reel-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <polygon points="5,2 16,9 5,16" fill="currentColor"/>
+            </svg>
+          </span>
+          Ver Showreel 2024
+        </button>
+        <a href="#video-work" class="btn-ghost">Explorar trabajos ↓</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">+40</span>
+        <span class="stat-label">proyectos</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">3+</span>
+        <span class="stat-label">años editando</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">2K+</span>
+        <span class="stat-label">suscriptores</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- REEL MODAL -->
+  <div id="reelModal" class="modal" role="dialog" aria-modal="true" aria-label="Showreel">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-inner">
+      <button class="modal-close" id="closeModal" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="17" y1="3" x2="3" y2="17" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+      <div class="modal-video-wrap">
+        <iframe
+          id="reelIframe"
+          src=""
+          data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1"
+          title="Showreel 2024 — Joan Ferrer"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen>
+        </iframe>
+        <div class="video-placeholder" id="reelPlaceholder">
+          <div class="vp-inner">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".4">
+              <polygon points="14,6 42,24 14,42" fill="white"/>
+            </svg>
+            <p>Showreel 2024</p>
+            <span>Reemplaza el src del iframe con tu vídeo de YouTube/Vimeo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Edición de vídeo</span><span class="mq-dot">·</span>
+      <span>Motion Graphics</span><span class="mq-dot">·</span>
+      <span>Color Grading</span><span class="mq-dot">·</span>
+      <span>YouTube Content</span><span class="mq-dot">·</span>
+      <span>Storytelling</span><span class="mq-dot">·</span>
+      <span>CapCut · Premiere · After Effects</span><span class="mq-dot">·</span>
+      <span>Edición de vídeo</span><span class="mq-dot">·</span>
+      <span>Motion Graphics</span><span class="mq-dot">·</span>
+      <span>Color Grading</span><span class="mq-dot">·</span>
+      <span>YouTube Content</span><span class="mq-dot">·</span>
+      <span>Storytelling</span><span class="mq-dot">·</span>
+      <span>CapCut · Premiere · After Effects</span><span class="mq-dot">·</span>
+    </div>
+  </div>
+
+  <!-- VIDEO WORK -->
+  <section id="video-work">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="section-label-num">01</span>
+        <span>Trabajos de vídeo</span>
+      </div>
+      <h2 class="section-title">Lo que creo<br><em>con la cámara y el corte</em></h2>
+    </div>
+
+    <div class="video-filters">
+      <button class="filter-btn active" data-filter="all">Todo</button>
+      <button class="filter-btn" data-filter="youtube">YouTube</button>
+      <button class="filter-btn" data-filter="shortfilm">Cortometraje</button>
+      <button class="filter-btn" data-filter="motion">Motion</button>
+      <button class="filter-btn" data-filter="brand">Marca</button>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+
+      <article class="vcard vcard--featured" data-cat="youtube">
+        <div class="vcard-thumb">
+          <img src="assets/thumb-placeholder-1.jpg" alt="Hair Growth Timelapse" loading="lazy" onerror="this.style.display='none'">
+          <div class="vcard-thumb-bg" style="background: linear-gradient(135deg, #1a0a00 0%, #3d1f00 100%)"></div>
+          <div class="vcard-overlay">
+            <a href="https://www.youtube.com/@joanferreyt" target="_blank" rel="noopener" class="vcard-play" aria-label="Ver vídeo">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <polygon points="6,3 19,11 6,19" fill="white"/>
+              </svg>
+            </a>
+          </div>
+          <div class="vcard-badge">Destacado</div>
+          <div class="vcard-duration">5:24</div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-cat">YouTube</span>
+          <h3 class="vcard-title">5 meses de crecimiento capilar — Timelapse & edición narrativa</h3>
+          <p class="vcard-desc">Documentación visual con ritmo cinematográfico, cuts en beat y color grading cálido.</p>
+          <a href="https://www.youtube.com/@joanferreyt" class="vcard-link" target="_blank" rel="noopener">Ver en YouTube →</a>
+        </div>
+      </article>
+
+      <article class="vcard" data-cat="youtube">
+        <div class="vcard-thumb">
+          <div class="vcard-thumb-bg" style="background: linear-gradient(135deg, #001a0d 0%, #003d1f 100%)"></div>
+          <div class="vcard-overlay">
+            <a href="https://www.youtube.com/@joanferreyt" target="_blank" rel="noopener" class="vcard-play" aria-label="Ver vídeo">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <polygon points="5,2 17,10 5,18" fill="white"/>
+              </svg>
+            </a>
+          </div>
+          <div class="vcard-duration">3:47</div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-cat">YouTube</span>
+          <h3 class="vcard-title">Rutina skincare masculina — edición con B-roll y texto animado</h3>
+          <p class="vcard-desc">Talking head + inserts de producto, motion graphics integrados en CapCut.</p>
+          <a href="https://www.youtube.com/@joanferreyt" class="vcard-link" target="_blank" rel="noopener">Ver en YouTube →</a>
+        </div>
+      </article>
+
+      <article class="vcard" data-cat="motion">
+        <div class="vcard-thumb">
+          <div class="vcard-thumb-bg" style="background: linear-gradient(135deg, #0a0014 0%, #1f0033 100%)"></div>
+          <div class="vcard-overlay">
+            <div class="vcard-play-static" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <polygon points="5,2 17,10 5,18" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vcard-duration">0:08</div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-cat">Motion Graphics</span>
+          <h3 class="vcard-title">Intro animada en HTML/CSS/JS — integración OBS + CapCut</h3>
+          <p class="vcard-desc">Motion graphics custom sin AE: código puro exportado por OBS con Screen blend.</p>
+          <a href="https://github.com/joanferreyt" class="vcard-link" target="_blank" rel="noopener">Ver código →</a>
+        </div>
+      </article>
+
+      <article class="vcard" data-cat="youtube">
+        <div class="vcard-thumb">
+          <div class="vcard-thumb-bg" style="background: linear-gradient(135deg, #001020 0%, #002040 100%)"></div>
+          <div class="vcard-overlay">
+            <a href="https://www.youtube.com/@joanferreyt" target="_blank" rel="noopener" class="vcard-play" aria-label="Ver vídeo">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <polygon points="5,2 17,10 5,18" fill="white"/>
+              </svg>
+            </a>
+          </div>
+          <div class="vcard-duration">6:12</div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-cat">YouTube</span>
+          <h3 class="vcard-title">Estilo de verano con presupuesto — lookbook editorial</h3>
+          <p class="vcard-desc">Color grading de revista, transiciones en J-cut, música sincronizada al corte.</p>
+          <a href="https://www.youtube.com/@joanferreyt" class="vcard-link" target="_blank" rel="noopener">Ver en YouTube →</a>
+        </div>
+      </article>
+
+      <article class="vcard" data-cat="brand">
+        <div class="vcard-thumb">
+          <div class="vcard-thumb-bg" style="background: linear-gradient(135deg, #1a0008 0%, #3d001a 100%)"></div>
+          <div class="vcard-overlay">
+            <div class="vcard-play-static" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <polygon points="5,2 17,10 5,18" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="vcard-duration">1:30</div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-cat">Marca</span>
+          <h3 class="vcard-title">Contenido de marca — proyecto cliente</h3>
+          <p class="vcard-desc">Vídeo corporativo con color grade personalizado y subtítulos animados.</p>
+          <a href="#contact" class="vcard-link">Solicitar proyecto similar →</a>
+        </div>
+      </article>
+
+      <article class="vcard vcard--add" data-cat="youtube">
+        <div class="vcard-add-inner">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" opacity=".3">
+            <line x1="16" y1="4" x2="16" y2="28" stroke="white" stroke-width="1.5"/>
+            <line x1="4" y1="16" x2="28" y2="16" stroke="white" stroke-width="1.5"/>
+          </svg>
+          <p>Añade más proyectos<br>en <code>index.html</code></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-layout">
+      <div class="about-visual">
+        <div class="about-photo-frame">
+          <div class="about-photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" opacity=".3">
+              <circle cx="20" cy="15" r="8" stroke="white" stroke-width="1.5"/>
+              <path d="M4 38 C4 28 8 24 20 24 C32 24 36 28 36 38" stroke="white" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span>Tu foto aquí</span>
+          </div>
+          <div class="about-photo-border"></div>
+        </div>
+        <div class="about-tools">
+          <span class="tool-tag">CapCut</span>
+          <span class="tool-tag">Premiere Pro</span>
+          <span class="tool-tag">After Effects</span>
+          <span class="tool-tag">OBS</span>
+          <span class="tool-tag">DaVinci Resolve</span>
+          <span class="tool-tag">Canva</span>
+          <span class="tool-tag">Flutter</span>
+          <span class="tool-tag">Spring Boot</span>
+          <span class="tool-tag">Odoo</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">
+          <span class="section-label-num">02</span>
+          <span>Sobre mí</span>
+        </div>
+        <h2 class="section-title">Editor primero,<br><em>programador también</em></h2>
+        <p class="about-p">Soy Joan Ferrer, de Banyeres de Mariola (Alicante). Empecé editando vídeos para mi canal de YouTube <a href="https://www.youtube.com/@joanferreyt" target="_blank" rel="noopener">@joanferreyt</a> — contenido de estilo de vida, fitness y self-improvement — y acabé desarrollando un lenguaje visual propio.</p>
+        <p class="about-p">Tengo el título de Técnico Superior en DAM (Desarrollo de Aplicaciones Multiplataforma), lo que me permite entender tanto el lado técnico como el creativo de cualquier proyecto. Esa combinación es lo que me diferencia.</p>
+        <p class="about-p">Actualmente trabajo en automatizaciones Odoo para agencias creativas y desarrollo apps en Flutter — pero la edición siempre es el núcleo.</p>
+        <div class="about-cta">
+          <a href="#contact" class="btn-primary">Trabajemos juntos</a>
+          <a href="https://github.com/joanferreyt" target="_blank" rel="noopener" class="btn-ghost-dark">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEV WORK -->
+  <section id="dev-work">
+    <div class="section-header">
+      <div class="section-label">
+        <span class="section-label-num">03</span>
+        <span>Desarrollo</span>
+      </div>
+      <h2 class="section-title">Proyectos de código<br><em>cuando no estoy en la sala de edición</em></h2>
+    </div>
+
+    <div class="dev-grid">
+
+      <article class="dev-card">
+        <div class="dev-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="dev-card-body">
+          <div class="dev-card-tags">
+            <span class="dev-tag">Flutter</span>
+            <span class="dev-tag">Spring Boot</span>
+            <span class="dev-tag">AWS</span>
+          </div>
+          <h3 class="dev-card-title">BatoiLOGIC</h3>
+          <p class="dev-card-desc">Sistema de gestión logística con API REST en Java 21, app móvil Flutter con sync offline, GPS tracking y backoffice Odoo. Proyecto final de DAM.</p>
+          <a href="https://github.com/joanferreyt" target="_blank" rel="noopener" class="dev-link">Ver repositorio →</a>
+        </div>
+      </article>
+
+      <article class="dev-card">
+        <div class="dev-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 12 L11 15 L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="dev-card-body">
+          <div class="dev-card-tags">
+            <span class="dev-tag">Odoo</span>
+            <span class="dev-tag">Python</span>
+            <span class="dev-tag">Automatización</span>
+          </div>
+          <h3 class="dev-card-title">ARQU — Onboarding Automation</h3>
+          <p class="dev-card-desc">Flujos de automatización encadenados en Odoo 19 para pipeline de onboarding de clientes: briefings, facturas, contratos RGPD y proyectos automáticos.</p>
+          <a href="#contact" class="dev-link">Consultar →</a>
+        </div>
+      </article>
+
+      <article class="dev-card">
+        <div class="dev-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2 L15.09 8.26 L22 9.27 L17 14.14 L18.18 21.02 L12 17.77 L5.82 21.02 L7 14.14 L2 9.27 L8.91 8.26 Z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="dev-card-body">
+          <div class="dev-card-tags">
+            <span class="dev-tag">Flutter</span>
+            <span class="dev-tag">Python</span>
+            <span class="dev-tag">ADB</span>
+          </div>
+          <h3 class="dev-card-title">SelfOS / Buildd — concept</h3>
+          <p class="dev-card-desc">App modular de lifestyle para jóvenes: hábitos, fitness, finanzas y rutinas. En concepto + prototipo. Scripts ADB de productividad para gestión de media desde PC.</p>
+          <a href="https://github.com/joanferreyt" target="_blank" rel="noopener" class="dev-link">Ver en GitHub →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label">
+        <span class="section-label-num">04</span>
+        <span>Contacto</span>
+      </div>
+      <h2 class="contact-title">¿Tienes un proyecto?<br><em>Hablemos.</em></h2>
+      <p class="contact-sub">Disponible para proyectos de edición de vídeo, motion graphics y colaboraciones en contenido.</p>
+      <div class="contact-links">
+        <a href="mailto:tu@email.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          tu@email.com
+        </a>
+        <a href="https://www.youtube.com/@joanferreyt" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-icon">▶</span>
+          @joanferreyt
+        </a>
+        <a href="https://github.com/joanferreyt" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-icon">&lt;/&gt;</span>
+          github.com/joanferreyt
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">JF</span>
+      <span class="footer-copy">© 2024 Joan Ferrer — Banyeres de Mariola</span>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#reel">Reel</a>
+        <a href="#video-work">Trabajos</a>
+        <a href="#about">Sobre mí</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

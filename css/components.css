@@ -1,0 +1,470 @@
+/* ─────────────────────────────────────────────────────────────
+   components.css — Tarjetas, botones, secciones y hero
+   Portfolio de Joan Ferré Vañó
+   ───────────────────────────────────────────────────────────── */
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem var(--space-lg) var(--space-2xl);
+  overflow: hidden;
+}
+
+.hero__inner {
+  max-width: 780px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__handle {
+  font-size: var(--size-sm);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.hero__name {
+  font-size: clamp(var(--size-4xl), 10vw, var(--size-5xl));
+  color: var(--text);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.04em;
+}
+
+.hero__bio {
+  font-size: clamp(var(--size-lg), 2.5vw, var(--size-xl));
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  max-width: 100%;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Decoración tipográfica en el fondo del hero */
+.hero__deco {
+  position: absolute;
+  bottom: -0.1em;
+  right: -0.05em;
+  font-family: var(--font-head);
+  font-size: clamp(8rem, 25vw, 22rem);
+  color: var(--text);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* ── BOTONES ─────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  font-size: var(--size-sm);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition:
+    background var(--dur-fast),
+    border-color var(--dur-fast),
+    color var(--dur-fast),
+    transform var(--dur-fast);
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Botón principal: fondo blanco */
+.btn--primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.btn--primary:hover {
+  background: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+/* Botón secundario: borde visible */
+.btn--secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-hover);
+}
+
+.btn--secondary:hover {
+  background: var(--accent-dim);
+  border-color: var(--border-hover);
+}
+
+/* Botón ghost: mínimo */
+.btn--ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+.btn--ghost:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+}
+
+/* Ancho completo para el formulario */
+.btn--full {
+  width: 100%;
+  justify-content: center;
+  padding: 0.85rem 1.4rem;
+}
+
+/* ── SECCIÓN SOBRE MÍ ────────────────────────────────────────── */
+.sobre-mi__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.sobre-mi__text p {
+  margin-bottom: var(--space-md);
+}
+
+.sobre-mi__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bloque de estadística */
+.sobre-mi__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.stat-block {
+  padding: var(--space-md);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-block__num {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.stat-block__label {
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── SECCIÓN CONTENIDO ───────────────────────────────────────── */
+.contenido__plataforma {
+  margin-bottom: var(--space-xl);
+}
+
+.contenido__plataforma:last-child {
+  margin-bottom: 0;
+}
+
+/* Título de plataforma (YouTube / TikTok) */
+.plataforma__titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--size-sm);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* Grid de tarjetas de vídeo */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+/* ── TARJETA DE VÍDEO ────────────────────────────────────────── */
+.card--video {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color var(--dur-fast),
+    transform var(--dur-med) var(--ease);
+  cursor: pointer;
+}
+
+.card--video:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+/* Miniatura del vídeo (placeholder de color) */
+.card__thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Colores de fondo distintos por tarjeta */
+.card__thumb--1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+.card__thumb--2 { background: linear-gradient(135deg, #1e1a2e 0%, #2e1f3e 100%); }
+.card__thumb--3 { background: linear-gradient(135deg, #1a2e1a 0%, #1e3a1e 100%); }
+.card__thumb--4 { background: linear-gradient(135deg, #2e1a1a 0%, #3a1e1e 100%); }
+.card__thumb--5 { background: linear-gradient(135deg, #0a0a0a 0%, #2a2a2a 100%); }
+.card__thumb--6 { background: linear-gradient(135deg, #1a1a1a 0%, #1e2e2e 100%); }
+.card__thumb--7 { background: linear-gradient(135deg, #2e2e1a 0%, #3a3a1e 100%); }
+.card__thumb--8 { background: linear-gradient(135deg, #1a2a2e 0%, #1e3a3e 100%); }
+
+/* Icono de play sobre la miniatura */
+.card__thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background var(--dur-fast);
+}
+
+.card--video:hover .card__thumb::after {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Contenido de la tarjeta */
+.card__body {
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.card__views {
+  font-size: var(--size-xs);
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+.card__title {
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+.card--video:hover .card__title {
+  color: var(--text);
+}
+
+/* Badge para el vídeo viral */
+.card__badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  border-radius: 3px;
+  padding: 0.15rem 0.45rem;
+  width: fit-content;
+}
+
+/* Vídeo viral: borde ligeramente destacado */
+.card--viral {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ── SECCIÓN REDES ────────────────────────────────────────────── */
+.redes__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+/* Tarjeta de red social */
+.red-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition:
+    border-color var(--dur-fast),
+    transform var(--dur-med) var(--ease),
+    background var(--dur-fast);
+}
+
+.red-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-3);
+  transform: translateY(-3px);
+}
+
+/* Icono de la red */
+.red-card__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color var(--dur-fast);
+}
+
+.red-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.red-card:hover .red-card__icon {
+  color: var(--text);
+}
+
+.red-card__nombre {
+  font-size: var(--size-sm);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.red-card__stat {
+  font-size: var(--size-xs);
+  color: var(--text-faint);
+}
+
+/* ── SECCIÓN CONTACTO / FORMULARIO ──────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form__label {
+  font-size: var(--size-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form__input {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: var(--size-base);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--dur-fast);
+  width: 100%;
+}
+
+.form__input::placeholder {
+  color: var(--text-faint);
+}
+
+.form__input:focus {
+  border-color: var(--border-hover);
+}
+
+.form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form__aviso {
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  min-height: 1.4em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .redes__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre-mi__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .sobre-mi__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .redes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero__name {
+    letter-spacing: -0.03em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .redes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sobre-mi__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}

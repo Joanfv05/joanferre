@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joan Ferre Vañó — Portfolio</title>
-  <meta name="description" content="Editor de vídeo y desarrollador de software. Banyeres de Mariola, Alicante (España)."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/animations.css"/>
-  <link rel="stylesheet" href="css/components.css"/>
-  <link rel="stylesheet" href="css/pages.css"/>
+  <meta name="description"
+    content="Editor de vídeo y desarrollador de software. Banyeres de Mariola, Alicante (España)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
 </head>
+
 <body class="page-enter">
 
   <!-- ── NAVBAR ─────────────────────────────────────────────── -->
@@ -20,10 +29,10 @@
     <div class="navbar__inner">
       <a href="index.html" class="navbar__logo">Joan Ferre</a>
       <nav class="navbar__nav">
-        <a href="index.html"   class="navbar__link">Inicio</a>
-        <a href="video.html"   class="navbar__link">Vídeo</a>
-        <a href="dev.html"     class="navbar__link">Dev</a>
-        <a href="about.html"   class="navbar__link">Sobre mí</a>
+        <a href="index.html" class="navbar__link">Inicio</a>
+        <a href="video.html" class="navbar__link">Vídeo</a>
+        <a href="dev.html" class="navbar__link">Dev</a>
+        <a href="about.html" class="navbar__link">Sobre mí</a>
         <a href="contact.html" class="navbar__link">Contacto</a>
       </nav>
       <button class="navbar__burger" id="nav-burger" aria-label="Abrir menú">
@@ -50,7 +59,8 @@
           <h1 class="hero__title hero-reveal glow-pulse">Joan Ferre Vañó</h1>
 
           <!-- Tagline con shimmer dorado/plateado -->
-          <p class="hero-reveal" style="font-family:var(--font-display);font-size:clamp(1.1rem,2.5vw,1.6rem);margin-bottom:var(--sp-md)">
+          <p class="hero-reveal"
+            style="font-family:var(--font-display);font-size:clamp(1.1rem,2.5vw,1.6rem);margin-bottom:var(--sp-md)">
             <span class="shimmer-text">Editor de vídeo &amp; Desarrollador de software</span>
           </p>
 
@@ -58,9 +68,9 @@
             Cuento historias reales. También las programo.
           </p>
           <div class="hero__ctas hero-reveal">
-            <a href="video.html"   class="btn btn--white btn--lg">Ver trabajo de vídeo</a>
-            <a href="dev.html"     class="btn btn--outline btn--lg">Proyectos de código</a>
-            <a href="about.html"   class="btn btn--ghost">Sobre mí</a>
+            <a href="video.html" class="btn btn--white btn--lg">Ver trabajo de vídeo</a>
+            <a href="dev.html" class="btn btn--outline btn--lg">Proyectos de código</a>
+            <a href="about.html" class="btn btn--ghost">Sobre mí</a>
             <a href="contact.html" class="btn btn--ghost">Contacto</a>
           </div>
         </div>
@@ -76,20 +86,26 @@
           <a href="video.html" class="index-block">
             <span class="index-block__num" aria-hidden="true">01</span>
             <span class="index-block__label">Creación de contenido</span>
-            <h2 class="index-block__title">Edición<br/>de vídeo</h2>
+            <h2 class="index-block__title">Edición<br />de vídeo</h2>
             <span class="index-block__arrow">
               Ver trabajo
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
             </span>
           </a>
           <!-- Bloque dev con borde neon que se enciende -->
           <a href="dev.html" class="index-block">
             <span class="index-block__num" aria-hidden="true">02</span>
             <span class="index-block__label">Desarrollo de software</span>
-            <h2 class="index-block__title">Proyectos<br/>de código</h2>
+            <h2 class="index-block__title">Proyectos<br />de código</h2>
             <span class="index-block__arrow">
               Ver proyectos
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
             </span>
           </a>
         </div>
@@ -125,7 +141,7 @@
         </div>
         <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
           <a href="contact.html" class="btn btn--white btn--lg">Contactar</a>
-          <a href="about.html"   class="btn btn--ghost btn--lg">Conocerme mejor</a>
+          <a href="about.html" class="btn btn--ghost btn--lg">Conocerme mejor</a>
         </div>
       </div>
     </section>
@@ -136,8 +152,8 @@
       <div class="footer__inner">
         <span class="footer__copy">© <span class="footer__year">2026</span> Joan Ferre Vañó</span>
         <nav class="footer__links">
-          <a href="https://github.com/joanferrevano"                        target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/joan-ferre-va%C3%B1%C3%B3/"  target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/joanferrevano" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/joan-ferre-va%C3%B1%C3%B3/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="mailto:joanferrecontact@gmail.com">Email</a>
         </nav>
       </div>
@@ -147,4 +163,5 @@
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>

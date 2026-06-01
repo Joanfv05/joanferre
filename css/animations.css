@@ -1,123 +1,158 @@
-/* ─────────────────────────────────────────────────────────────
-   animations.css — Animaciones y transiciones
-   Portfolio de Joan Ferré Vañó
-   ───────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   animations.css — Keyframes y clases de animación
+   Portfolio profesional de Joan Ferre Vañó
+   ══════════════════════════════════════════════════════════════ */
 
-/* ── Fade-in en el hero (carga inicial) ────────────────────── */
+/* ── Keyframes ──────────────────────────────────────────────── */
 
-/* Estado inicial: invisible y desplazado */
-.fade-in {
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes cursorPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%       { transform: translate(-50%, -50%) scale(1.4); }
+}
+
+@keyframes timelineDot {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1;  }
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Entrada de página ──────────────────────────────────────── */
+.page-enter {
+  animation: pageIn 0.55s var(--ease) both;
+}
+
+/* ── Hero: texto con reveal progresivo ──────────────────────── */
+.hero-reveal {
   opacity: 0;
-  transform: translateY(18px);
-  animation: anim-fade-up var(--dur-slow) var(--ease) forwards;
+  transform: translateY(20px);
+  animation: fadeUp var(--dur) var(--ease) forwards;
 }
+.hero-reveal:nth-child(1) { animation-delay: 0.1s; }
+.hero-reveal:nth-child(2) { animation-delay: 0.22s; }
+.hero-reveal:nth-child(3) { animation-delay: 0.34s; }
+.hero-reveal:nth-child(4) { animation-delay: 0.46s; }
+.hero-reveal:nth-child(5) { animation-delay: 0.58s; }
 
-/* Retrasos escalonados para el hero */
-.fade-in--delay-1 { animation-delay: 0.15s; }
-.fade-in--delay-2 { animation-delay: 0.3s; }
-.fade-in--delay-3 { animation-delay: 0.45s; }
-
-@keyframes anim-fade-up {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── Reveal al hacer scroll (IntersectionObserver) ─────────── */
-
-/* Estado inicial antes de entrar en viewport */
+/* ── Scroll reveal ──────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.75s var(--ease),
-    transform 0.75s var(--ease);
+  transform: translateY(24px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
 }
-
-.reveal--delay {
-  transition-delay: 0.15s;
-}
-
-/* Estado final cuando el elemento entra en viewport */
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ── Hover suave en tarjetas ────────────────────────────────── */
-
-/* Se aplica a .card y .red-card vía components.css */
-/* Las transiciones de hover se definen en components.css
-   para mantener separación entre layout y movimiento */
-
-/* ── Pulsación del decorador hero ──────────────────────────── */
-@keyframes anim-pulse-opacity {
-  0%, 100% { opacity: 0.04; }
-  50%       { opacity: 0.07; }
-}
-
-.hero__deco {
-  animation: anim-pulse-opacity 6s ease-in-out infinite;
-}
-
-/* ── Línea de subrayado en hover (navbar, footer) ──────────── */
-@keyframes anim-underline {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-/* ── Entrada del overlay del menú móvil ────────────────────── */
-.nav-overlay__link {
+/* Stagger escalonado para grupos de elementos */
+.stagger > * {
   opacity: 0;
-  transform: translateY(10px);
-  transition:
-    color var(--dur-fast),
-    opacity var(--dur-med) var(--ease),
-    transform var(--dur-med) var(--ease);
+  transform: translateY(20px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
 }
+.stagger.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s;    }
+.stagger.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s;  }
+.stagger.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s;  }
+.stagger.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s;  }
+.stagger.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s;  }
+.stagger.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s;  }
+.stagger.is-visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.6s;  }
+.stagger.is-visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 0.7s;  }
 
-/* Cuando el overlay está abierto, los links aparecen */
-.nav-overlay.is-open .nav-overlay__link {
+/* ── Cursor personalizado ───────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: var(--white);
+  border-radius: 50%;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease), height 0.3s var(--ease),
+              border-color 0.3s, transform 0.08s linear;
+}
+body.cursor-hover .cursor-dot  { width: 10px; height: 10px; background: var(--white); }
+body.cursor-hover .cursor-ring { width: 50px; height: 50px; border-color: rgba(255,255,255,0.6); }
+
+/* ── Timeline ───────────────────────────────────────────────── */
+.timeline-item .tl-dot {
+  transition: transform 0.4s var(--ease), background 0.4s;
+}
+.timeline-item.is-visible .tl-dot {
+  animation: timelineDot 0.45s var(--ease) forwards;
+}
+.timeline-item {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.timeline-item.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
-/* Retrasos escalonados para cada link del menú móvil */
-.nav-overlay.is-open .nav-overlay__link:nth-child(1) { transition-delay: 0.05s; }
-.nav-overlay.is-open .nav-overlay__link:nth-child(2) { transition-delay: 0.1s;  }
-.nav-overlay.is-open .nav-overlay__link:nth-child(3) { transition-delay: 0.15s; }
-.nav-overlay.is-open .nav-overlay__link:nth-child(4) { transition-delay: 0.2s;  }
-
-/* ── Aparición del aviso del formulario ─────────────────────── */
-@keyframes anim-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ── Hover 3D en tarjetas ───────────────────────────────────── */
+.card-3d {
+  transition: transform 0.35s var(--ease), box-shadow 0.35s;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+.card-3d:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
 
-.form__aviso {
-  animation: none;
+/* ── Transición de página ───────────────────────────────────── */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
 }
+.page-transition-overlay.active { opacity: 1; }
 
-.form__aviso.is-visible {
-  animation: anim-slide-in 0.3s var(--ease) forwards;
-}
-
-/* ── Reducción de movimiento (accesibilidad) ────────────────── */
+/* ── Accesibilidad: reducir movimiento ──────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .fade-in,
-  .reveal,
-  .hero__deco,
-  .nav-overlay__link,
-  .form__aviso {
-    animation: none !important;
-    transition: none !important;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .stagger > *, .hero-reveal, .timeline-item {
     opacity: 1 !important;
     transform: none !important;
   }

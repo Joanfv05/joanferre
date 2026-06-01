@@ -1,326 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joan Ferre Vañó — Creador de contenido</title>
-  <meta name="description" content="Portfolio personal de Joan Ferre Vañó. Creador de contenido de desarrollo personal y mentalidad." />
-
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/components.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joan Ferre Vañó — Portfolio</title>
+  <meta name="description" content="Editor de vídeo y desarrollador de software. Banyeres de Mariola, España."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
 </head>
-<body>
+<body class="page-enter">
 
   <!-- ── NAVBAR ─────────────────────────────────────────────── -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <a href="#inicio" class="navbar__logo">JFV</a>
-      <nav class="navbar__links" id="nav-links">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#contenido">Contenido</a>
-        <a href="#redes">Redes</a>
-        <a href="#contacto">Contacto</a>
+      <a href="index.html" class="navbar__logo">Joan Ferre</a>
+      <nav class="navbar__nav">
+        <a href="index.html"   class="navbar__link">Inicio</a>
+        <a href="video.html"   class="navbar__link">Vídeo</a>
+        <a href="dev.html"     class="navbar__link">Dev</a>
+        <a href="about.html"   class="navbar__link">Sobre mí</a>
+        <a href="contact.html" class="navbar__link">Contacto</a>
       </nav>
-      <button class="navbar__toggle" id="nav-toggle" aria-label="Abrir menú">
+      <button class="navbar__burger" id="nav-burger" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- Menú móvil overlay -->
-  <div class="nav-overlay" id="nav-overlay">
-    <button class="nav-overlay__close" id="nav-close" aria-label="Cerrar menú">✕</button>
-    <nav class="nav-overlay__links">
-      <a href="#sobre-mi"  class="nav-overlay__link">Sobre mí</a>
-      <a href="#contenido" class="nav-overlay__link">Contenido</a>
-      <a href="#redes"     class="nav-overlay__link">Redes</a>
-      <a href="#contacto"  class="nav-overlay__link">Contacto</a>
-    </nav>
+  <!-- Menú móvil -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="video.html">Vídeo</a>
+    <a href="dev.html">Dev</a>
+    <a href="about.html">Sobre mí</a>
+    <a href="contact.html">Contacto</a>
   </div>
 
   <main>
-
-    <!-- ── HERO ───────────────────────────────────────────────── -->
-    <section class="hero" id="inicio">
-      <div class="hero__inner">
-        <p class="hero__handle fade-in">@joanferreyt</p>
-        <h1 class="hero__name fade-in fade-in--delay-1">Joan Ferre Vañó</h1>
-        <p class="hero__bio fade-in fade-in--delay-2">
-          Mi vida real, sin filtros.<br />Aprendiendo a construirme.
-        </p>
-        <div class="hero__ctas fade-in fade-in--delay-3">
-          <a href="https://www.youtube.com/@joanferreyt" class="btn btn--primary" target="_blank" rel="noopener">
-            <!-- Icono YouTube -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5a3 3 0 0 0-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/></svg>
-            YouTube
-          </a>
-          <a href="https://www.tiktok.com/@joanferree" class="btn btn--secondary" target="_blank" rel="noopener">
-            <!-- Icono TikTok -->
-            <svg width="16" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.54V6.78a4.85 4.85 0 0 1-1.02-.09z"/></svg>
-            TikTok
-          </a>
-          <a href="https://linktr.ee/joanferre" class="btn btn--ghost" target="_blank" rel="noopener">Todos los links</a>
-        </div>
-      </div>
-      <!-- Decoración tipográfica -->
-      <span class="hero__deco" aria-hidden="true">2020→</span>
-    </section>
-
-    <!-- ── SOBRE MÍ ─────────────────────────────────────────── -->
-    <section class="section sobre-mi" id="sobre-mi">
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section class="hero hero--left">
       <div class="container">
-        <div class="sobre-mi__grid">
-          <div class="sobre-mi__text reveal">
-            <span class="label">Sobre mí</span>
-            <h2 class="heading-2">En 2020 tocué fondo.<br />Ahí empezó todo.</h2>
-            <p>
-              Era el peor momento de mi vida. Sin dirección, sin energía, sin saber quién quería ser. Podría haber seguido igual, pero decidí grabarlo todo — el proceso real, no la versión bonita.
-            </p>
-            <p>
-              Desde entonces llevo más de 287 vídeos documentando lo que funciona y lo que no: mentalidad, hábitos, relaciones, identidad. Sin guión perfecto. Sin filtros.
-            </p>
-            <p>
-              El canal creció despacio, de forma honesta. Hoy son 2.140 personas que siguen el mismo proceso que yo. Eso es lo que me importa.
-            </p>
-          </div>
-          <div class="sobre-mi__stats reveal reveal--delay">
-            <div class="stat-block">
-              <span class="stat-block__num">287</span>
-              <span class="stat-block__label">vídeos publicados</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-block__num">2.140</span>
-              <span class="stat-block__label">suscriptores en YouTube</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-block__num">8.164</span>
-              <span class="stat-block__label">me gusta en TikTok</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-block__num">76K</span>
-              <span class="stat-block__label">vistas en el vídeo viral</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CONTENIDO ───────────────────────────────────────── -->
-    <section class="section contenido" id="contenido">
-      <div class="container">
-        <div class="section__header reveal">
-          <span class="label">Contenido</span>
-          <h2 class="heading-2">Lo más visto</h2>
-        </div>
-
-        <!-- YouTube -->
-        <div class="contenido__plataforma reveal">
-          <div class="plataforma__titulo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5a3 3 0 0 0-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/></svg>
-            YouTube
-          </div>
-          <div class="cards-grid">
-            <a href="https://www.youtube.com/@joanferreyt" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--1"></div>
-              <div class="card__body">
-                <span class="card__views">2.5K vistas</span>
-                <p class="card__title">¿Crees Que Todas Son P*TAS? Entonces Necesitas Ver Esto</p>
-              </div>
-            </a>
-            <a href="https://www.youtube.com/@joanferreyt" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--2"></div>
-              <div class="card__body">
-                <span class="card__views">885 vistas</span>
-                <p class="card__title">Cómo Empezar el Winter Arc y Lograr una Transformación Radical</p>
-              </div>
-            </a>
-            <a href="https://www.youtube.com/@joanferreyt" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--3"></div>
-              <div class="card__body">
-                <span class="card__views">781 vistas</span>
-                <p class="card__title">La Rutina de Skincare Perfecta para Hombres</p>
-              </div>
-            </a>
-            <a href="https://www.youtube.com/@joanferreyt" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--4"></div>
-              <div class="card__body">
-                <span class="card__views">303 vistas</span>
-                <p class="card__title">Si haces esto, tu adolescencia se va en 90 segundos</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- TikTok -->
-        <div class="contenido__plataforma reveal">
-          <div class="plataforma__titulo">
-            <svg width="16" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.54V6.78a4.85 4.85 0 0 1-1.02-.09z"/></svg>
-            TikTok
-          </div>
-          <div class="cards-grid">
-            <a href="https://www.tiktok.com/@joanferree" class="card card--video card--viral" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--5"></div>
-              <div class="card__body">
-                <span class="card__badge">Viral</span>
-                <span class="card__views">76.1K vistas</span>
-                <p class="card__title">La evolución de mi grupo de amigos (2020-2025)</p>
-              </div>
-            </a>
-            <a href="https://www.tiktok.com/@joanferree" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--6"></div>
-              <div class="card__body">
-                <span class="card__views">2.896 vistas</span>
-                <p class="card__title">Menos scroll, más vida real</p>
-              </div>
-            </a>
-            <a href="https://www.tiktok.com/@joanferree" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--7"></div>
-              <div class="card__body">
-                <span class="card__views">2.130 vistas</span>
-                <p class="card__title">FIN DEL NO FAP</p>
-              </div>
-            </a>
-            <a href="https://www.tiktok.com/@joanferree" class="card card--video" target="_blank" rel="noopener">
-              <div class="card__thumb card__thumb--8"></div>
-              <div class="card__body">
-                <span class="card__views">1.805 vistas</span>
-                <p class="card__title">¡Mi SOLUCIÓN al SobrePensar!</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── REDES SOCIALES ──────────────────────────────────── -->
-    <section class="section redes" id="redes">
-      <div class="container">
-        <div class="section__header reveal">
-          <span class="label">Redes</span>
-          <h2 class="heading-2">Encuéntrame aquí</h2>
-        </div>
-        <div class="redes__grid reveal">
-
-          <a href="https://www.youtube.com/@joanferreyt" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5a3 3 0 0 0-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/></svg>
-            </div>
-            <span class="red-card__nombre">YouTube</span>
-            <span class="red-card__stat">2.140 suscriptores</span>
-          </a>
-
-          <a href="https://www.tiktok.com/@joanferree" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.79 1.54V6.78a4.85 4.85 0 0 1-1.02-.09z"/></svg>
-            </div>
-            <span class="red-card__nombre">TikTok</span>
-            <span class="red-card__stat">8.164 me gusta</span>
-          </a>
-
-          <a href="https://www.instagram.com/joanferreyt/" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-            </div>
-            <span class="red-card__nombre">Instagram</span>
-            <span class="red-card__stat">@joanferreyt</span>
-          </a>
-
-          <a href="https://x.com/joanferreyt" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </div>
-            <span class="red-card__nombre">Twitter / X</span>
-            <span class="red-card__stat">@joanferreyt</span>
-          </a>
-
-          <a href="https://www.twitch.tv/joanferreyt" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
-            </div>
-            <span class="red-card__nombre">Twitch</span>
-            <span class="red-card__stat">@joanferreyt</span>
-          </a>
-
-          <a href="https://discord.gg/MRZ3a45Maf" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-            </div>
-            <span class="red-card__nombre">Discord</span>
-            <span class="red-card__stat">Comunidad</span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/joan-ferre-va%C3%B1%C3%B3/" class="red-card" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </div>
-            <span class="red-card__nombre">LinkedIn</span>
-            <span class="red-card__stat">Joan Ferre Vañó</span>
-          </a>
-
-          <a href="https://linktr.ee/joanferre" class="red-card red-card--linktree" target="_blank" rel="noopener">
-            <div class="red-card__icon">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.517.528.897 1.052.897h2.04v4.503c0 .16 0 .324.083.486.166.492.634.812 1.142.812.507 0 .974-.32 1.14-.812.083-.162.083-.326.083-.486v-4.503h2.04c.528 0 .973-.38 1.052-.897 0-.162 0-.324-.08-.486l-3.274-5.214-.003-.005c-.168-.268-.46-.432-.774-.43a.922.922 0 0 0-.785.435zm8.415-1.24c.082.16.082.323.082.486-.002.527-.439.954-.967.954h-1.08l2.518-4.043.003-.005c.168-.268.46-.432.774-.43a.92.92 0 0 1 .785.435l2.438 3.888a1.01 1.01 0 0 1 .08.486.98.98 0 0 1-.967.954h-1.243zm-13.83.486c0-.163 0-.325.082-.486l2.438-3.89a.92.92 0 0 1 .785-.433c.314-.002.607.162.774.43l.003.005 2.518 4.043H7.864a.98.98 0 0 1-.967-.954c0-.163 0-.325.082-.486z"/></svg>
-            </div>
-            <span class="red-card__nombre">Linktree</span>
-            <span class="red-card__stat">Todos los links</span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CONTACTO ─────────────────────────────────────────── -->
-    <section class="section contacto" id="contacto">
-      <div class="container container--narrow">
-        <div class="section__header reveal">
-          <span class="label">Contacto</span>
-          <h2 class="heading-2">Hablemos</h2>
-          <p class="section__desc">
-            Para colaboraciones, preguntas o simplemente saludar escríbeme a
-            <a href="mailto:joanferrecontact@gmail.com" class="link-mail">joanferrecontact@gmail.com</a>
+        <div class="hero__inner">
+          <span class="hero__eyebrow hero-reveal">Banyeres de Mariola, España · DAM</span>
+          <h1 class="hero__title hero-reveal">
+            Editor de vídeo<br/><em>&amp; desarrollador.</em>
+          </h1>
+          <p class="hero__sub hero-reveal">
+            Cuento historias reales. También las programo.
           </p>
+          <div class="hero__ctas hero-reveal">
+            <a href="video.html"   class="btn btn--white btn--lg">Ver trabajo de vídeo</a>
+            <a href="dev.html"     class="btn btn--outline btn--lg">Proyectos de código</a>
+            <a href="about.html"   class="btn btn--ghost">Sobre mí</a>
+          </div>
+        </div>
+      </div>
+      <span class="hero__bg-text" aria-hidden="true">JFV</span>
+    </section>
+
+    <!-- ── BLOQUES PRINCIPALES ─────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+
+        <div class="index-blocks stagger reveal">
+          <!-- Bloque vídeo -->
+          <a href="video.html" class="index-block">
+            <span class="index-block__num" aria-hidden="true">01</span>
+            <span class="index-block__label">Creación de contenido</span>
+            <h2 class="index-block__title">Edición de<br/>vídeo</h2>
+            <span class="index-block__arrow">
+              Ver trabajo
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <!-- Bloque dev -->
+          <a href="dev.html" class="index-block">
+            <span class="index-block__num" aria-hidden="true">02</span>
+            <span class="index-block__label">Desarrollo de software</span>
+            <h2 class="index-block__title">Proyectos de<br/>código</h2>
+            <span class="index-block__arrow">
+              Ver proyectos
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
         </div>
 
-        <form class="form reveal" id="contact-form" novalidate>
-          <div class="form__group">
-            <label for="nombre" class="form__label">Nombre</label>
-            <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre" required />
+        <!-- Stats ──────────────────────────────────────── -->
+        <div class="index-stats reveal">
+          <div class="index-stat">
+            <span class="index-stat__num">287</span>
+            <span class="index-stat__label">vídeos publicados</span>
           </div>
-          <div class="form__group">
-            <label for="email" class="form__label">Email</label>
-            <input type="email" id="email" name="email" class="form__input" placeholder="tu@email.com" required />
+          <div class="index-stat">
+            <span class="index-stat__num">2.140</span>
+            <span class="index-stat__label">suscriptores</span>
           </div>
-          <div class="form__group">
-            <label for="mensaje" class="form__label">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" class="form__input form__textarea" placeholder="Cuéntame..." rows="5" required></textarea>
+          <div class="index-stat">
+            <span class="index-stat__num">76K</span>
+            <span class="index-stat__label">visualizaciones</span>
           </div>
-          <button type="submit" class="btn btn--primary btn--full">Enviar mensaje</button>
-          <p class="form__aviso" id="form-aviso" aria-live="polite"></p>
-        </form>
+          <div class="index-stat">
+            <span class="index-stat__num">4</span>
+            <span class="index-stat__label">proyectos de código</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CTA FINAL ────────────────────────────────────────── -->
+    <section class="section" style="text-align:center">
+      <div class="container container--sm">
+        <div class="section__head reveal">
+          <span class="label">¿Trabajamos juntos?</span>
+          <h2>Cuéntame tu proyecto.</h2>
+        </div>
+        <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn--white btn--lg">Contactar</a>
+          <a href="about.html"   class="btn btn--ghost btn--lg">Conocerme mejor</a>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Joan Ferre Vañó</p>
-      <a href="https://linktr.ee/joanferre" target="_blank" rel="noopener" class="footer__link">linktr.ee/joanferre</a>
+      <div class="footer__inner">
+        <span class="footer__copy">© <span class="footer__year">2026</span> Joan Ferre Vañó</span>
+        <nav class="footer__links">
+          <a href="https://github.com/joanferrevano"                       target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/joan-ferre-va%C3%B1%C3%B3/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:joanferrecontact@gmail.com">Email</a>
+        </nav>
+      </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <script src="js/cursor.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
-
 </body>
 </html>

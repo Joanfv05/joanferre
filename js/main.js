@@ -1,101 +1,116 @@
-/* ─────────────────────────────────────────────────────────────
-   main.js — Scroll animations e interacciones generales
-   Portfolio de Joan Ferré Vañó
-   ───────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   main.js — Scroll reveal, stagger, timeline, formulario
+   Portfolio profesional de Joan Ferre Vañó
+   ══════════════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ── 1. Reveal al hacer scroll (IntersectionObserver) ─────── */
-  var elementosReveal = document.querySelectorAll('.reveal');
+  /* ── 1. IntersectionObserver para .reveal y .stagger ─────── */
+  var observables = document.querySelectorAll('.reveal, .stagger, .section__head, .timeline-item');
 
   if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            // Dejar de observar una vez visible (animación de una sola vez)
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,     // se activa cuando el 12% del elemento es visible
-        rootMargin: '0px 0px -40px 0px' // un poco antes del borde inferior
-      }
-    );
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    elementosReveal.forEach(function (el) {
-      observer.observe(el);
-    });
-
+    observables.forEach(function (el) { io.observe(el); });
   } else {
-    // Fallback para navegadores sin soporte: mostrar todo directamente
-    elementosReveal.forEach(function (el) {
-      el.classList.add('is-visible');
-    });
+    /* Fallback navegadores sin soporte */
+    observables.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ── 2. Formulario de contacto ───────────────────────────── */
-  var form   = document.getElementById('contact-form');
-  var aviso  = document.getElementById('form-aviso');
+  /* ── 2. Hover 3D en tarjetas de proyectos ────────────────── */
+  document.querySelectorAll('.card-3d').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var cx   = rect.left + rect.width  / 2;
+      var cy   = rect.top  + rect.height / 2;
+      var rx   = ((e.clientY - cy) / rect.height) * -10;
+      var ry   = ((e.clientX - cx) / rect.width)  *  10;
+      card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-5px)';
+    });
+
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = '';
+    });
+  });
+
+  /* ── 3. Año dinámico en el footer ────────────────────────── */
+  var anoEl = document.querySelector('.footer__year');
+  if (anoEl) anoEl.textContent = new Date().getFullYear();
+
+  /* ── 4. Formulario de contacto ───────────────────────────── */
+  var form  = document.getElementById('contact-form');
+  var aviso = document.getElementById('form-aviso');
 
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Validación básica
-      var nombre  = form.querySelector('#nombre').value.trim();
-      var email   = form.querySelector('#email').value.trim();
-      var mensaje = form.querySelector('#mensaje').value.trim();
+      var nombre  = (form.querySelector('#nombre')  || {}).value || '';
+      var email   = (form.querySelector('#email')   || {}).value || '';
+      var mensaje = (form.querySelector('#mensaje') || {}).value || '';
 
-      if (!nombre || !email || !mensaje) {
-        mostrarAviso('Por favor, rellena todos los campos.', false);
+      if (!nombre.trim() || !email.trim() || !mensaje.trim()) {
+        setAviso('Por favor, completa todos los campos.', false);
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setAviso('Introduce un email válido.', false);
         return;
       }
 
-      if (!esEmailValido(email)) {
-        mostrarAviso('Introduce un email válido.', false);
-        return;
-      }
-
-      // Simula el envío (sin backend)
-      // Para producción: reemplazar por fetch() a un endpoint real o Formspree
       var boton = form.querySelector('button[type="submit"]');
-      boton.disabled = true;
-      boton.textContent = 'Enviando...';
+      if (boton) { boton.disabled = true; boton.textContent = 'Enviando...'; }
 
+      /* Simulación — en producción reemplazar con fetch() a un endpoint real */
       setTimeout(function () {
-        boton.disabled = false;
-        boton.textContent = 'Enviar mensaje';
+        if (boton) { boton.disabled = false; boton.textContent = 'Enviar mensaje'; }
         form.reset();
-        mostrarAviso('Mensaje enviado. Te respondo pronto.', true);
+        setAviso('Mensaje enviado. Te respondo pronto.', true);
       }, 1200);
     });
   }
 
-  /* Muestra el aviso del formulario */
-  function mostrarAviso(texto, exito) {
+  function setAviso(texto, ok) {
     if (!aviso) return;
     aviso.textContent = texto;
-    aviso.style.color = exito ? '#f4f4f4' : '#999';
-    aviso.classList.remove('is-visible');
-    // Forzar reflow para reiniciar la animación
-    void aviso.offsetWidth;
-    aviso.classList.add('is-visible');
+    aviso.style.color = ok ? '#aaa' : '#777';
   }
 
-  /* Validación básica de email */
-  function esEmailValido(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
+  /* ── 5. Transición suave entre páginas ───────────────────── */
+  var overlay = document.querySelector('.page-transition-overlay');
 
-  /* ── 3. Año dinámico en el footer ───────────────────────── */
-  var anoEl = document.querySelector('.footer p');
-  if (anoEl) {
-    var ano = new Date().getFullYear();
-    anoEl.textContent = '© ' + ano + ' Joan Ferré Vañó';
-  }
+  /* Fade-in al cargar la página */
+  document.documentElement.style.opacity = '0';
+  document.documentElement.style.transition = 'opacity 0.4s ease';
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      document.documentElement.style.opacity = '1';
+    });
+  });
+
+  /* Fade-out al hacer clic en links internos */
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    var href = link.getAttribute('href') || '';
+    /* Solo links a páginas del portfolio (sin # ni externos) */
+    if (href.startsWith('#') || href.startsWith('http') ||
+        href.startsWith('mailto') || link.target === '_blank') return;
+
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var destino = href;
+      document.documentElement.style.opacity = '0';
+      setTimeout(function () {
+        window.location.href = destino;
+      }, 320);
+    });
+  });
 
 })();

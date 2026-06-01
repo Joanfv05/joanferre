@@ -61,13 +61,12 @@
         <div class="contact-grid">
 
           <!-- Columna izquierda: email + redes -->
-          <div class="reveal">
+          <div class="reveal" style="display:flex;flex-direction:column;gap:0.5rem">
             <span class="label">Email directo</span>
-            <!-- Email con glow suave estático -->
             <a href="mailto:joanferrecontact@gmail.com" class="contact-email-link">
               joanferrecontact@gmail.com
             </a>
-
+          
             <div style="margin-top:var(--sp-xl)">
               <span class="label">También aquí</span>
               <!-- Iconos con glow blanco al hover -->
@@ -141,7 +140,7 @@
               </div>
               <div class="form__group">
                 <label for="asunto" class="form__label">Asunto</label>
-                <input type="text" id="asunto" name="asunto" class="form__input" placeholder="¿De qué se trata?"/>
+                <input type="text" id="asunto" name="asunto" class="form__input" placeholder="¿De qué se trata?" required/>
               </div>
               <div class="form__group">
                 <label for="mensaje" class="form__label">Mensaje</label>

@@ -42,7 +42,7 @@
   /* La línea del timeline crece al hacer scroll usando IntersectionObserver
      sobre cada item individual */
   var tlItems = document.querySelectorAll('.tl-item');
-  var tlWrap  = document.querySelector('.timeline-wrap');
+  var tlWrap = document.querySelector('.timeline-wrap');
 
   if (tlItems.length) {
     /* Activar la línea cuando el wrapper entra en viewport */
@@ -75,10 +75,10 @@
   document.querySelectorAll('.project-card').forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
       var rect = card.getBoundingClientRect();
-      var cx = rect.left + rect.width  / 2;
-      var cy = rect.top  + rect.height / 2;
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
       var rx = ((e.clientY - cy) / rect.height) * -8;
-      var ry = ((e.clientX - cx) / rect.width)  *  8;
+      var ry = ((e.clientX - cx) / rect.width) * 8;
       card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-5px)';
     });
     card.addEventListener('mouseleave', function () {
@@ -87,7 +87,7 @@
   });
 
   /* ── 5. Transición suave entre páginas (fade) ───────────── */
-  document.documentElement.style.opacity  = '0';
+  document.documentElement.style.opacity = '0';
   document.documentElement.style.transition = 'opacity 0.35s ease';
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
@@ -98,7 +98,7 @@
   document.querySelectorAll('a[href]').forEach(function (link) {
     var href = link.getAttribute('href') || '';
     if (href.startsWith('#') || href.startsWith('http') ||
-        href.startsWith('mailto') || link.target === '_blank') return;
+      href.startsWith('mailto') || link.target === '_blank') return;
     link.addEventListener('click', function (e) {
       e.preventDefault();
       var destino = href;
@@ -107,39 +107,59 @@
     });
   });
 
-  /* ── 6. Formulario de contacto ───────────────────────────── */
-  var form  = document.getElementById('contact-form');
-  var aviso = document.getElementById('form-aviso');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var nombre  = (form.querySelector('#nombre')  || {}).value || '';
-      var email   = (form.querySelector('#email')   || {}).value || '';
-      var mensaje = (form.querySelector('#mensaje') || {}).value || '';
-      if (!nombre.trim() || !email.trim() || !mensaje.trim()) {
-        setAviso('Completa todos los campos.', false); return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setAviso('Email no válido.', false); return;
-      }
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
-      setTimeout(function () {
-        if (btn) { btn.disabled = false; btn.textContent = 'Enviar mensaje'; }
-        form.reset();
-        setAviso('Mensaje enviado. Te respondo pronto.', true);
-      }, 1200);
-    });
-  }
-  function setAviso(t, ok) {
-    if (!aviso) return;
-    aviso.textContent = t;
-    aviso.style.color = ok ? '#aaa' : '#666';
-  }
-
-  /* ── 7. Año dinámico en el footer ───────────────────────── */
+  /* ── 6. Año dinámico en el footer ───────────────────────── */
   document.querySelectorAll('.footer__year').forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
+
+  /* ── 7. Formulario de contacto (Formspree) ───────────────── */
+  var form = document.getElementById('contact-form');
+  var aviso = document.getElementById('form-aviso');
+
+  if (form && aviso) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Validación manual
+      var nombre = form.querySelector('#nombre').value.trim();
+      var email = form.querySelector('#email').value.trim();
+      var asunto = form.querySelector('#asunto').value.trim();
+      var mensaje = form.querySelector('#mensaje').value.trim();
+
+      if (!nombre || !email || !asunto || !mensaje) {
+        aviso.textContent = '✗ Completa todos los campos obligatorios.';
+        aviso.style.color = '#ff6b6b';
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        aviso.textContent = '✗ El email no tiene un formato válido.';
+        aviso.style.color = '#ff6b6b';
+        return;
+      }
+
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
+      aviso.textContent = '';
+      aviso.style.color = '';
+
+      try {
+        var res = await fetch('https://formspree.io/f/xvzyeobb', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          aviso.textContent = '✓ Mensaje enviado. Te respondo pronto.';
+          aviso.style.color = 'var(--text-1)';
+          form.reset();
+        } else { throw new Error(); }
+      } catch {
+        aviso.textContent = '✗ Algo fue mal. Escríbeme directamente al email.';
+        aviso.style.color = '#ff6b6b';
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'Enviar mensaje'; }
+      }
+    });
+  }
 
 })();

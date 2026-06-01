@@ -72,7 +72,7 @@
   }
 
   /* ── 4. Hover 3D en tarjetas ────────────────────────────── */
-  document.querySelectorAll('.project-card, .video-card, .social-card').forEach(function (card) {
+  document.querySelectorAll('.project-card').forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
       var rect = card.getBoundingClientRect();
       var cx = rect.left + rect.width / 2;

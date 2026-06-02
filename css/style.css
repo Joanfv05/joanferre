@@ -156,7 +156,9 @@ p  { color: var(--text-2); line-height: 1.7; }
 }
 .section__head.is-visible h2::after {
   width: 100%;
-  animation: line-flash 1.6s var(--ease) 0.1s forwards;
+  animation:
+    line-flash      1.6s var(--ease)              0.1s  forwards,
+    line-glow-slide 4s   ease-in-out              1.8s  infinite;
 }
 
 /* ── Footer ─────────────────────────────────────────────────── */

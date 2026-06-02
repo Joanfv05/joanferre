@@ -78,13 +78,32 @@
   100% { left: 130%; opacity: 0; }
 }
 
-/* Destello que recorre la línea decorativa del h2
-   Con background-size:200%, background-pos 120%→-20%
-   mueve el punto brillante (en el centro del bg 2×)
-   desde fuera del borde izquierdo hasta fuera del derecho */
+/* Destello inicial (una vez al hacer scroll) */
 @keyframes line-flash {
   0%   { background-position: 120% center, 0 center; }
   100% { background-position: -20% center, 0 center; }
+}
+
+/* Glow en movimiento continuo — recorre la línea de izq. a der.
+   70% del ciclo = movimiento   |   30% = pausa antes de volver */
+@keyframes line-glow-slide {
+  0%   {
+    background-position: 130% center, 0 center;
+    box-shadow: 0 0 3px rgba(255,255,255,0.4);
+  }
+  35%  {
+    /* punto brillante en el centro → glow máximo */
+    box-shadow: 0 0 6px white, 0 0 16px rgba(255,255,255,0.55), 0 0 32px rgba(255,255,255,0.2);
+  }
+  70%  {
+    background-position: -30% center, 0 center;
+    box-shadow: 0 0 3px rgba(255,255,255,0.4);
+  }
+  100% {
+    /* pausa en el extremo derecho antes del siguiente ciclo */
+    background-position: -30% center, 0 center;
+    box-shadow: 0 0 3px rgba(255,255,255,0.4);
+  }
 }
 
 /* Crecimiento de la línea del timeline */

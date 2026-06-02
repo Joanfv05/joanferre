@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Banner LinkedIn — Joan Ferre Vañó</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 20px;
+    font-family: sans-serif;
+  }
+  .info { color: #888; font-size: 13px; text-align: center; }
+  .btn-export {
+    background: #fff; color: #000; border: none;
+    padding: 10px 28px; border-radius: 6px;
+    font-size: 14px; font-weight: 600; cursor: pointer; letter-spacing: 0.04em;
+  }
+  .btn-export:hover { background: #ddd; }
+
+  #banner {
+    width: 1584px;
+    height: 396px;
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 25%, black 10%, transparent 75%);
+    mask-image: radial-gradient(ellipse 85% 70% at 50% 25%, black 10%, transparent 75%);
+    pointer-events: none; z-index: 0;
+  }
+
+  #banner::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 15% 80%, rgba(139,92,246,0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 45% at 88% 12%, rgba(255,255,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 50% 115%, rgba(254,44,85,0.05) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .watermark {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 220px;
+    color: #fff;
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    bottom: -20px;
+    right: -10px;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    z-index: 1;
+  }
+
+  .safe-zone {
+    position: absolute;
+    left: 460px;
+    top: 0;
+    width: calc(1584px - 460px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 80px 20px 60px;
+    z-index: 2;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-shadow:
+      0 0 10px #fff,
+      0 0 22px rgba(255,255,255,0.7),
+      0 0 45px rgba(255,255,255,0.35),
+      0 0 80px rgba(255,255,255,0.15);
+  }
+
+  .name em {
+    font-style: italic;
+    color: #ffffff;
+    text-shadow:
+      0 0 10px #fff,
+      0 0 22px rgba(255,255,255,0.7),
+      0 0 45px rgba(255,255,255,0.35),
+      0 0 80px rgba(255,255,255,0.15);
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff, rgba(255,255,255,0.25), transparent);
+    box-shadow: 0 0 8px rgba(255,255,255,0.5);
+  }
+
+  .role {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #bbb;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .role span {
+    font-style: italic;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4), 0 0 18px rgba(255,255,255,0.2);
+  }
+
+  /* MÁS VISIBLE — antes #484848, ahora #aaa */
+  .tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    color: #aaaaaa;
+    letter-spacing: 0.03em;
+    font-weight: 400;
+  }
+
+  .stack {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* Pills más grandes y más visibles */
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 5px 16px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+
+  .pill-white {
+    background: #fff;
+    color: #0a0a0a;
+  }
+
+  /* Borde más visible — antes 0.07 opacity, ahora 0.35 */
+  .pill-dim {
+    background: #1c1c1c;
+    color: #cccccc;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="info">Banner LinkedIn — 1584 × 396 px</div>
+
+<div id="banner">
+  <div class="watermark">JFV</div>
+  <div class="safe-zone">
+    <div class="content">
+      <div class="eyebrow">Banyeres de Mariola · Alicante</div>
+      <div class="name">Joan Ferre <em>Vañó</em></div>
+      <div class="divider"></div>
+      <div class="role"><span>Editor de vídeo</span> &amp; Desarrollador de software</div>
+      <div class="tagline">Cuento historias reales. También las programo.</div>
+      <div class="stack">
+        <span class="pill pill-white">Flutter</span>
+        <span class="pill pill-dim">Odoo</span>
+        <span class="pill pill-dim">CapCut</span>
+        <span class="pill pill-dim">YouTube</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn-export" onclick="exportPNG()">⬇ Descargar PNG (1584×396)</button>
+<div class="info">Espera 2-3 segundos a que carguen las fuentes antes de exportar</div>
+
+<script>
+  async function exportPNG() {
+    await document.fonts.ready;
+    const banner = document.getElementById('banner');
+    const canvas = await html2canvas(banner, {
+      width: 1584,
+      height: 396,
+      scale: 1,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#0a0a0a',
+      logging: false
+    });
+    const link = document.createElement('a');
+    link.download = 'banner_linkedin_joan_ferre.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
+</script>
+</body>
+</html>

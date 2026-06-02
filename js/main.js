@@ -34,7 +34,7 @@
     });
   }, { threshold: 0.15 });
 
-  document.querySelectorAll('.project-card, .video-card').forEach(function (el) {
+  document.querySelectorAll('.project-card, .video-card, .tl-card').forEach(function (el) {
     sweepIO.observe(el);
   });
 
@@ -42,17 +42,19 @@
   /* La línea del timeline crece al hacer scroll usando IntersectionObserver
      sobre cada item individual */
   var tlItems = document.querySelectorAll('.tl-item');
-  var tlWrap = document.querySelector('.timeline-wrap');
+  var tlWraps = document.querySelectorAll('.timeline-wrap');
 
   if (tlItems.length) {
-    /* Activar la línea cuando el wrapper entra en viewport */
+    /* Activar la línea de cada wrapper cuando entra en viewport */
     var tlWrapIO = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        tlWrap.classList.add('is-visible');
-        tlWrapIO.disconnect();
-      }
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          tlWrapIO.unobserve(entry.target);
+        }
+      });
     }, { threshold: 0.1 });
-    if (tlWrap) tlWrapIO.observe(tlWrap);
+    tlWraps.forEach(function (wrap) { tlWrapIO.observe(wrap); });
 
     /* Activar cada nodo del timeline con stagger según su posición */
     var tlIO = new IntersectionObserver(function (entries) {

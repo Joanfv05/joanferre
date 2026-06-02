@@ -165,28 +165,34 @@
           <div class="reveal reveal--delay">
             <span class="label">Formulario</span>
             <form class="form" id="contact-form" novalidate>
+
+              <!-- ── Honeypot: oculto para humanos, los bots lo rellenan ── -->
+              <!-- No usar display:none (algunos bots lo detectan) -->
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;" tabindex="-1">
+                <label for="website">Página web (no rellenar)</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" value="" />
+              </div>
+
               <div class="form__row">
                 <div class="form__group">
                   <label for="nombre" class="form__label">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre" required />
+                  <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre" required autocomplete="name" />
                 </div>
                 <div class="form__group">
                   <label for="email" class="form__label">Email</label>
-                  <input type="email" id="email" name="email" class="form__input" placeholder="tu@email.com" required />
+                  <input type="email" id="email" name="email" class="form__input" placeholder="tu@email.com" required autocomplete="email" />
                 </div>
               </div>
               <div class="form__group">
                 <label for="asunto" class="form__label">Asunto</label>
-                <input type="text" id="asunto" name="asunto" class="form__input" placeholder="¿De qué se trata?"
-                  required />
+                <input type="text" id="asunto" name="asunto" class="form__input" placeholder="¿De qué se trata?" required />
               </div>
               <div class="form__group">
                 <label for="mensaje" class="form__label">Mensaje</label>
                 <textarea id="mensaje" name="mensaje" class="form__input form__textarea" placeholder="Cuéntame..."
                   rows="6" required></textarea>
               </div>
-              <!-- Botón con efecto neon de encendido al hover -->
-              <button type="submit" class="btn btn--white btn--lg">Enviar mensaje</button>
+              <button type="submit" class="btn btn--white btn--lg" id="form-submit-btn">Enviar mensaje</button>
               <p class="form__aviso" id="form-aviso" aria-live="polite"></p>
             </form>
           </div>

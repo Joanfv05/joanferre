@@ -116,35 +116,145 @@
     el.textContent = new Date().getFullYear();
   });
 
-  /* ── 7. Formulario de contacto (Formspree) ───────────────── */
-  var form = document.getElementById('contact-form');
+  /* ── 7. Formulario de contacto — Anti-spam + Formspree ───── */
+  var form  = document.getElementById('contact-form');
   var aviso = document.getElementById('form-aviso');
 
   if (form && aviso) {
-    form.addEventListener('submit', async function (e) {
+
+    /* ── Configuración anti-spam ──────────────────────────── */
+    var COOLDOWN_MS       = 90  * 1000;   // 90 s mínimo entre envíos
+    var BLOCK_COUNT       = 3;            // envíos que activan el bloqueo
+    var BLOCK_WINDOW_MS   = 2   * 60 * 1000; // ventana para detectarlos (2 min)
+    var BLOCK_DURATION_MS = 15  * 60 * 1000; // duración del bloqueo (15 min)
+    var BTN_COOLDOWN_S    = 60;           // segundos que el botón queda deshabilitado
+
+    /* Pon TURNSTILE_ENABLED = true cuando añadas el widget en el HTML */
+    var TURNSTILE_ENABLED = false;
+
+    var LS_LAST  = 'jfv_form_last';   // timestamp del último envío OK
+    var LS_TIMES = 'jfv_form_times';  // array JSON de envíos recientes
+    var LS_BLOCK = 'jfv_form_block';  // timestamp hasta el que está bloqueado
+
+    /* ── Helpers localStorage (con try/catch por modo privado) */
+    function lsGet(k)    { try { return localStorage.getItem(k); }    catch(e) { return null; } }
+    function lsSet(k, v) { try { localStorage.setItem(k, v); }        catch(e) {} }
+    function getTimes() {
+      try { return JSON.parse(lsGet(LS_TIMES) || '[]'); } catch(e) { return []; }
+    }
+
+    /* ── Estado actual ─────────────────────────────────────── */
+    function isBlocked() {
+      return Date.now() < parseInt(lsGet(LS_BLOCK) || '0', 10);
+    }
+    function blockRemainSecs() {
+      return Math.ceil((parseInt(lsGet(LS_BLOCK) || '0', 10) - Date.now()) / 1000);
+    }
+    function cooldownRemainSecs() {
+      var last = parseInt(lsGet(LS_LAST) || '0', 10);
+      return Math.max(0, Math.ceil((COOLDOWN_MS - (Date.now() - last)) / 1000));
+    }
+
+    /* ── Registrar envío y activar bloqueo si procede ──────── */
+    function recordSubmit() {
+      var now   = Date.now();
+      var times = getTimes().filter(function(t) { return now - t < BLOCK_WINDOW_MS; });
+      times.push(now);
+      lsSet(LS_LAST,  now);
+      lsSet(LS_TIMES, JSON.stringify(times));
+      if (times.length >= BLOCK_COUNT) {
+        lsSet(LS_BLOCK, now + BLOCK_DURATION_MS);
+      }
+    }
+
+    /* ── Countdown visual en el botón ──────────────────────── */
+    function startBtnCooldown(btn, secs) {
+      btn.disabled    = true;
+      btn.textContent = 'Espera ' + secs + 's…';
+      var t = setInterval(function() {
+        secs--;
+        if (secs <= 0) {
+          clearInterval(t);
+          btn.disabled    = false;
+          btn.textContent = 'Enviar mensaje';
+        } else {
+          btn.textContent = 'Espera ' + secs + 's…';
+        }
+      }, 1000);
+    }
+
+    /* ── Validación de campos ──────────────────────────────── */
+    function validateFields() {
+      var nombre  = (form.querySelector('#nombre')  || {}).value || '';
+      var email   = (form.querySelector('#email')   || {}).value || '';
+      var asunto  = (form.querySelector('#asunto')  || {}).value || '';
+      var mensaje = (form.querySelector('#mensaje') || {}).value || '';
+      nombre  = nombre.trim();
+      email   = email.trim();
+      asunto  = asunto.trim();
+      mensaje = mensaje.trim();
+
+      if (!nombre || !email || !asunto || !mensaje)
+        return '✗ Completa todos los campos obligatorios.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        return '✗ El email no tiene un formato válido.';
+      if (nombre.length < 2)
+        return '✗ El nombre es demasiado corto.';
+      if (mensaje.length < 10)
+        return '✗ El mensaje es demasiado corto (mín. 10 caracteres).';
+      return null; // todo OK
+    }
+
+    /* ── Helper para mostrar avisos ────────────────────────── */
+    function setAviso(msg, color) {
+      aviso.textContent = msg;
+      aviso.style.color = color || '';
+    }
+
+    /* ── Submit handler ────────────────────────────────────── */
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
+      var btn = document.getElementById('form-submit-btn');
 
-      // Validación manual
-      var nombre = form.querySelector('#nombre').value.trim();
-      var email = form.querySelector('#email').value.trim();
-      var asunto = form.querySelector('#asunto').value.trim();
-      var mensaje = form.querySelector('#mensaje').value.trim();
-
-      if (!nombre || !email || !asunto || !mensaje) {
-        aviso.textContent = '✗ Completa todos los campos obligatorios.';
-        aviso.style.color = '#ff6b6b';
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        aviso.textContent = '✗ El email no tiene un formato válido.';
-        aviso.style.color = '#ff6b6b';
+      /* 1 · Honeypot — campo oculto que solo rellenan los bots */
+      var hp = form.querySelector('[name="website"]');
+      if (hp && hp.value !== '') {
+        /* Simular éxito sin enviar nada real */
+        setAviso('✓ Mensaje enviado. Te respondo pronto.', '');
+        form.reset();
         return;
       }
 
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
-      aviso.textContent = '';
-      aviso.style.color = '';
+      /* 2 · Bloqueo por ráfaga de envíos */
+      if (isBlocked()) {
+        var mins = Math.ceil(blockRemainSecs() / 60);
+        setAviso('⛔ Demasiados envíos. Espera ' + mins + ' min.', '#ff6b6b');
+        return;
+      }
+
+      /* 3 · Cooldown entre envíos */
+      var wait = cooldownRemainSecs();
+      if (wait > 0) {
+        setAviso('⏳ Espera ' + wait + 's antes del próximo envío.', '#ffd080');
+        return;
+      }
+
+      /* 4 · Validación de campos */
+      var err = validateFields();
+      if (err) { setAviso(err, '#ff6b6b'); return; }
+
+      /* 5 · Cloudflare Turnstile (si está activado) */
+      if (TURNSTILE_ENABLED) {
+        var token = form.querySelector('[name="cf-turnstile-response"]');
+        if (!token || !token.value) {
+          setAviso('✗ Completa el captcha antes de enviar.', '#ff6b6b');
+          return;
+        }
+      }
+
+      /* 6 · Enviar a Formspree */
+      if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+      setAviso('', '');
 
       try {
         var res = await fetch('https://formspree.io/f/xvzyeobb', {
@@ -152,15 +262,19 @@
           headers: { 'Accept': 'application/json' },
           body: new FormData(form)
         });
+
         if (res.ok) {
-          aviso.textContent = '✓ Mensaje enviado. Te respondo pronto.';
-          aviso.style.color = 'var(--text-1)';
+          recordSubmit();  // registrar SOLO los envíos que llegan a Formspree
+          setAviso('✓ Mensaje enviado. Te respondo pronto.', '');
           form.reset();
-        } else { throw new Error(); }
-      } catch {
-        aviso.textContent = '✗ Algo fue mal. Escríbeme directamente al email.';
-        aviso.style.color = '#ff6b6b';
-      } finally {
+          /* Resetear Turnstile si está activo */
+          if (TURNSTILE_ENABLED && window.turnstile) window.turnstile.reset();
+          if (btn) startBtnCooldown(btn, BTN_COOLDOWN_S);
+        } else {
+          throw new Error('HTTP ' + res.status);
+        }
+      } catch(fetchErr) {
+        setAviso('✗ Error al enviar. Escríbeme directamente al email.', '#ff6b6b');
         if (btn) { btn.disabled = false; btn.textContent = 'Enviar mensaje'; }
       }
     });

@@ -78,6 +78,15 @@
   100% { left: 130%; opacity: 0; }
 }
 
+/* Destello que recorre la línea decorativa del h2
+   Con background-size:200%, background-pos 120%→-20%
+   mueve el punto brillante (en el centro del bg 2×)
+   desde fuera del borde izquierdo hasta fuera del derecho */
+@keyframes line-flash {
+  0%   { background-position: 120% center, 0 center; }
+  100% { background-position: -20% center, 0 center; }
+}
+
 /* Crecimiento de la línea del timeline */
 @keyframes line-grow {
   from { transform: scaleY(0); }

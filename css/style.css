@@ -139,12 +139,25 @@ p  { color: var(--text-2); line-height: 1.7; }
 /* Línea decorativa bajo título de sección */
 .section__head h2::after {
   content: ''; display: block; width: 0; height: 1px;
-  background: linear-gradient(90deg, var(--white), transparent);
+  /* Capa 1 (200% ancho): punto brillante centrado — viaja L→R
+     Capa 2 (100% ancho): línea base siempre visible */
+  background:
+    linear-gradient(90deg,
+      transparent 42%, rgba(255,255,255,0.5) 47%,
+      white       50%,
+      rgba(255,255,255,0.5) 53%, transparent 58%
+    ) no-repeat,
+    linear-gradient(90deg, white, rgba(255,255,255,0.25), transparent);
+  background-size: 200% 100%, 100% 100%;
+  background-position: 120% center, 0 center;
   box-shadow: var(--glow-sm);
   margin-top: var(--sp-md);
   transition: width 1.2s var(--ease);
 }
-.section__head.is-visible h2::after { width: 60px; }
+.section__head.is-visible h2::after {
+  width: 100%;
+  animation: line-flash 1.6s var(--ease) 0.1s forwards;
+}
 
 /* ── Footer ─────────────────────────────────────────────────── */
 .footer {

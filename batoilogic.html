@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BatoiLOGIC — Joan Ferre Vañó</title>
+  <meta name="description"
+    content="BatoiLOGIC: sistema de gestión logística completo con app móvil Flutter, API REST Spring Boot, backoffice C# y módulos Odoo. Proyecto Final DAM 2024–2025." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+</head>
+
+<body class="page-enter">
+
+  <!-- ── NAVBAR ─────────────────────────────────────────────── -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">Joan Ferre</a>
+      <nav class="navbar__nav">
+        <a href="index.html" class="navbar__link">Inicio</a>
+        <a href="video.html" class="navbar__link">Vídeo</a>
+        <a href="dev.html" class="navbar__link is-active">Dev</a>
+        <a href="about.html" class="navbar__link">Sobre mí</a>
+        <a href="contact.html" class="navbar__link">Contacto</a>
+      </nav>
+      <button class="navbar__burger" id="nav-burger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="video.html">Vídeo</a>
+    <a href="dev.html" class="is-active">Dev</a>
+    <a href="about.html">Sobre mí</a>
+    <a href="contact.html">Contacto</a>
+  </div>
+
+  <main>
+
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section class="hero hero--left hero--dev">
+      <div class="container">
+        <div class="hero__inner">
+          <span class="hero__eyebrow hero-reveal">Proyecto Final DAM · 2024–2025</span>
+          <h1 class="hero__title hero-reveal"
+            style="text-shadow:0 0 10px rgba(139,92,246,0.35),0 0 30px rgba(255,255,255,0.15)">
+            BatoiLOGIC
+          </h1>
+          <p class="hero__sub hero-reveal">
+            Sistema de gestión logística completo con app móvil, API REST, backoffice Windows y Odoo
+          </p>
+          <div class="hero__ctas hero-reveal">
+            <a href="https://proj-ferrevanojoan.gitbook.io/memoria-proyecto" class="btn btn--white btn--lg"
+              target="_blank" rel="noopener">
+              Ver documentación
+            </a>
+            <a href="https://github.com/PROJ-FerreVanoJoan" class="btn btn--outline btn--lg"
+              target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+              </svg>
+              Ver en GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <span class="hero__bg-text" aria-hidden="true">BL</span>
+    </section>
+
+    <!-- ── EL PROYECTO ───────────────────────────────────────── -->
+    <section class="section">
+      <div class="container container--sm">
+        <div class="section__head reveal">
+          <span class="label">Contexto</span>
+          <h2>El proyecto</h2>
+        </div>
+        <div class="reveal">
+          <p style="font-size:var(--s-lg);color:var(--text-2);line-height:1.75;max-width:60ch">
+            BatoiLOGIC es una empresa ficticia de distribución logística comarcal que necesitaba digitalizar todos sus procesos. El proyecto consiste en desarrollar un ecosistema completo: dos apps móviles Flutter, una API REST con Spring Boot desplegada en AWS EC2, un backoffice Windows Forms en C#, un backoffice Odoo con módulos personalizados y una app CLI de importación/exportación de datos en Java.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── APLICACIONES DESARROLLADAS ───────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="label">Entregables</span>
+          <h2>Aplicaciones desarrolladas</h2>
+          <p>Cinco piezas distintas que forman un ecosistema logístico completo.</p>
+        </div>
+        <div class="projects-grid stagger">
+
+          <div class="project-card card card-has-sweep">
+            <div class="project-card__top">
+              <span class="project-card__name">App Repartidores</span>
+              <span class="badge badge--dim">Flutter</span>
+            </div>
+            <span class="project-card__tech">Flutter · Dart · SQLite · WebSocket</span>
+            <p class="project-card__desc">App móvil para repartidores con gestión de rutas, geolocalización GPS en tiempo real, actualización de estados de entrega y comunicación vía WebSocket con el backoffice.</p>
+            <div class="tl-card__badges" style="display:flex;flex-wrap:wrap;gap:var(--sp-xs);margin-top:var(--sp-sm)">
+              <span class="badge badge--dim">GPS</span>
+              <span class="badge badge--dim">WebSocket</span>
+              <span class="badge badge--dim">SQLite</span>
+            </div>
+          </div>
+
+          <div class="project-card card card-has-sweep">
+            <div class="project-card__top">
+              <span class="project-card__name">App Clientes</span>
+              <span class="badge badge--dim">Flutter</span>
+            </div>
+            <span class="project-card__tech">Flutter · Dart · SQLite</span>
+            <p class="project-card__desc">App móvil para clientes con registro, creación de pedidos y seguimiento en tiempo real del estado de cada entrega.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-xs);margin-top:var(--sp-sm)">
+              <span class="badge badge--dim">Pedidos</span>
+              <span class="badge badge--dim">Seguimiento</span>
+            </div>
+          </div>
+
+          <div class="project-card card card-has-sweep">
+            <div class="project-card__top">
+              <span class="project-card__name">Backoffice Windows</span>
+              <span class="badge badge--dim">C#</span>
+            </div>
+            <span class="project-card__tech">C# · Windows Forms · WebSocket</span>
+            <p class="project-card__desc">Aplicación de escritorio para gestión de pedidos, rutas y seguimiento de flota en tiempo real. Incluye reconocimiento de voz para control por comandos.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-xs);margin-top:var(--sp-sm)">
+              <span class="badge badge--dim">Reconocimiento de voz</span>
+              <span class="badge badge--dim">Flota en tiempo real</span>
+            </div>
+          </div>
+
+          <div class="project-card card card-has-sweep">
+            <div class="project-card__top">
+              <span class="project-card__name">Backoffice Odoo</span>
+              <span class="badge badge--dim">Python</span>
+            </div>
+            <span class="project-card__tech">Python · Odoo · PostgreSQL</span>
+            <p class="project-card__desc">Módulos personalizados de repartidores y camiones, albaranes, facturas y gestión de stock integrados directamente en el ERP.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-xs);margin-top:var(--sp-sm)">
+              <span class="badge badge--dim">Módulos custom</span>
+              <span class="badge badge--dim">ERP</span>
+              <span class="badge badge--dim">Stock</span>
+            </div>
+          </div>
+
+          <div class="project-card card card-has-sweep">
+            <div class="project-card__top">
+              <span class="project-card__name">App CLI</span>
+              <span class="badge badge--dim">Java</span>
+            </div>
+            <span class="project-card__tech">Java</span>
+            <p class="project-card__desc">Herramienta de línea de comandos para importación y exportación masiva de ciudades, códigos postales, tarifas y rutas al sistema.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-xs);margin-top:var(--sp-sm)">
+              <span class="badge badge--dim">Importación</span>
+              <span class="badge badge--dim">Exportación</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STACK TÉCNICO ─────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="label">Tecnología</span>
+          <h2>Stack técnico</h2>
+          <p>Nueve tecnologías integradas en un solo sistema coherente.</p>
+        </div>
+        <div class="projects-grid stagger">
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">Flutter</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Apps móviles cliente y repartidor</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">Spring Boot</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">API REST backend en Java</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">C# · WinForms</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Aplicación backoffice de escritorio</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">Python · Odoo</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">ERP y módulos personalizados</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">Java</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Procesos en segundo plano y CLI</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">PostgreSQL</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Base de datos centralizada</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">AWS EC2</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Despliegue en producción</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">WebSocket</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Chat en tiempo real repartidor–backoffice</p>
+          </div>
+
+          <div class="card card-has-sweep" style="padding:var(--sp-md) var(--sp-lg)">
+            <p style="font-family:var(--font-display);font-size:var(--s-xl);color:var(--white);margin-bottom:0.25rem">Google Maps</p>
+            <p style="font-size:var(--s-sm);color:var(--text-2)">Navegación y seguimiento de flota</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MI ROL ────────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container container--sm">
+        <div class="section__head reveal">
+          <span class="label">Contribución</span>
+          <h2>Mi rol</h2>
+        </div>
+        <div class="timeline-wrap reveal">
+          <div class="timeline-line"></div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">Arquitectura</span>
+            <p class="tl-text">Diseño de la arquitectura del sistema y modelo de datos relacional que soporta el ecosistema completo de cinco aplicaciones.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">Backend</span>
+            <p class="tl-text">Desarrollo de la API REST completa con Spring Boot, Hibernate y documentación de endpoints para consumo desde todas las apps.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">Mobile</span>
+            <p class="tl-text">Desarrollo de las dos apps móviles Flutter — cliente y repartidor — con geolocalización en tiempo real, estados de pedido y persistencia local SQLite.</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <span class="tl-year">Escritorio</span>
+            <p class="tl-text">Backoffice Windows Forms en C# con reconocimiento de voz, visualización del mapa de flota en tiempo real vía WebSocket y gestión completa de rutas.</p>
+          </div>
+
+          <div class="tl-item tl-item--current">
+            <div class="tl-dot"></div>
+            <span class="tl-year">ERP</span>
+            <p class="tl-text">Configuración de Odoo con módulos personalizados de repartidores y camiones, integración de albaranes y gestión de stock adaptada al flujo logístico.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RESULTADOS ─────────────────────────────────────────── -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="label">Cifras</span>
+          <h2>Resultados</h2>
+        </div>
+        <div class="stats-row stagger">
+          <div class="stat-item">
+            <span class="stat-item__num" style="animation:pulse-num 3s ease-in-out infinite">5</span>
+            <span class="stat-item__label">aplicaciones desarrolladas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-item__num" style="animation:pulse-num 3s ease-in-out infinite 0.4s">9</span>
+            <span class="stat-item__label">tecnologías integradas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-item__num" style="animation:pulse-num 3s ease-in-out infinite 0.8s">100%</span>
+            <span class="stat-item__label">presentado y defendido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ───────────────────────────────────────────────── -->
+    <section class="section" style="text-align:center">
+      <div class="container container--sm">
+        <div class="section__head reveal">
+          <span class="label">Código abierto</span>
+          <h2>¿Quieres ver el código?</h2>
+        </div>
+        <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="https://github.com/PROJ-FerreVanoJoan" class="btn btn--white btn--lg"
+            target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+            </svg>
+            Ver organización GitHub
+          </a>
+          <a href="https://proj-ferrevanojoan.gitbook.io/memoria-proyecto" class="btn btn--outline btn--lg"
+            target="_blank" rel="noopener">
+            Ver memoria del proyecto
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">© <span class="footer__year">2026</span> Joan Ferre Vañó</span>
+        <nav class="footer__links">
+          <a href="https://github.com/joanferrevano" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/joan-ferre-va%C3%B1%C3%B3/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:joanferrecontact@gmail.com">Email</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

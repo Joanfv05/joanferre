@@ -73,16 +73,20 @@
 
   /* ── 4. Hover 3D en tarjetas ────────────────────────────── */
   document.querySelectorAll('.project-card').forEach(function (card) {
+    card.addEventListener('mouseenter', function () {
+      card.style.transition = 'border-color 0.3s, box-shadow 0.35s';
+    });
     card.addEventListener('mousemove', function (e) {
       var rect = card.getBoundingClientRect();
       var cx = rect.left + rect.width / 2;
       var cy = rect.top + rect.height / 2;
       var rx = ((e.clientY - cy) / rect.height) * -8;
       var ry = ((e.clientX - cx) / rect.width) * 8;
-      card.style.cssText += ';transform:perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-5px)!important';
+      card.style.transform = 'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-5px)';
     });
     card.addEventListener('mouseleave', function () {
-      card.style.removeProperty('transform');
+      card.style.transform = '';
+      card.style.transition = '';
     });
   });
 
